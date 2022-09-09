@@ -1,0 +1,34 @@
+@font-face {
+    font-family: ARCO;
+    src: local('ARCO'),url('../../ARCO.ttf');
+  }            
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "ARCO", sans-serif;
+  }
+.body-l{
+    position: relative;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    min-height: 100vh;
+    background:#252839;
+}
+.h1{
+    position: relative;
+    font-size: 6em;
+    text-align: center;
+    color: #01fe87;
+    text-transform: uppercase;
+}
+@media (max-width:1200px){
+    .body-p{
+        overflow: hidden;
+    }
+    h1{
+        font-size: 3.4em;  
+        align-items: center;
+    }
+}
