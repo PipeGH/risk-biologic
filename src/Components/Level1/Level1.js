@@ -16,7 +16,6 @@ export default function Level1() {
   ];
   const navigate = useNavigate();
   
-  const lev1 = false;
   
   const handleSubmit = async (e) => {
     e.preventDefault();

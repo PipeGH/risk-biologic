@@ -9,6 +9,7 @@
   font-family: "ARCO", sans-serif;
 }
 .body_l3{
+  
   margin: 0;
   padding: 0;
   width: 100%;
@@ -17,6 +18,10 @@
   letter-spacing: 0.03em;
   line-height: 1.6;
   display: inline-table;
+  background-image:url("./../images/residuosf.jpg");
+  background-repeat: no-repeat;
+  background-position-x: -165px;
+  background-size: 150%;
 }
 .app_container{
   width: 100%;
@@ -45,27 +50,28 @@
   -o-border-radius: 15px;
 }
 .dd_container h2{
-  font-size: 19px;
+  font-size: 17px;
   letter-spacing: 0.2em;
   color: #fff;
 }
 .dd_container:nth-child(1){
+  margin-left: 70px;
   height: 100%;
 }
 .dd_container:nth-child(2){
   background-color: #161616;
-  background-image:url("./../images/simbolo3.png");
-  background-repeat: no-repeat;
-  background-position-x: center;
-  background-position-y:360px;
-  background-size: 60%;
-  }
-.dd_container:nth-child(3){
-  background-image:url("./../images/simbolo.png");
+  background-image:url("./../images/simbolo4.png");
   background-repeat: no-repeat;
   background-position-x: center;
   background-position-y:370px;
-  background-size: 50%;
+  background-size: 35%;
+  }
+.dd_container:nth-child(3){
+  background-image:url("./../images/simbolo3.png");
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y:370px;
+  background-size: 60%;
   background-color:#b5b5b5 ;
 }
 .dd_container:nth-child(4){
@@ -76,6 +82,14 @@
   background-position-y:370px;
   background-size: 30%;
   }
+  .dd_container:nth-child(5){
+    background-color: #26422b;
+    background-image:url("./../images/simbolo.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y:370px;
+    background-size: 50%;
+    }
   
 .drop_container{
   display: inline-flex;
@@ -145,6 +159,7 @@
  }
  .time_remaining{
   margin-top: 20px;
+  letter-spacing: 1px;
  }
  .time_remaining h2{
   position: relative;
@@ -359,6 +374,10 @@
     margin-top: -60px;
   }
   .dd_container:nth-child(4){
+    height: 50%;
+    margin-top: -60px;
+  }
+  .dd_container:nth-child(5){
     height: 50%;
     margin-top: -60px;
   }

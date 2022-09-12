@@ -235,7 +235,7 @@ export default function Question4() {
             window.location.reload();
             setMinutes(0);
             setSeconds(10);
-            setAreDisabled(false);}, 100);
+            setAreDisabled(!stateModal);}, 100);
         
       }
     } catch (error) {

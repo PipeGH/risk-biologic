@@ -2,12 +2,6 @@
   font-family: ARCO;
   src: local("ARCO"), url("../../ARCO.ttf");
 }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "ARCO", sans-serif;
-}
 .body-q3 {
   margin: 0;
   padding: 0;
@@ -21,6 +15,8 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position-x: -100px;
+  box-sizing: border-box;
+  font-family: "ARCO", sans-serif;
 }
 .question3 {
   position: relative;

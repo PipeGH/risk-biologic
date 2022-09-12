@@ -26,7 +26,7 @@ export default function RegisterF (){
   ];
   
   const [jugador, setJugador] = useState(valorInicial);
-  const [datos, setDatos] = useState([]);
+  const [setDatos] = useState([]);
   const db = getFirestore(app);
   const [error, setError] = useState();
   const [selectedPlayer, setSelectedPlayer] = useState({ checked: null });
@@ -87,7 +87,7 @@ export default function RegisterF (){
       }
     };
     getDatos();
-  }, []);
+  },);
 
   return (
       <div className="body-rf">

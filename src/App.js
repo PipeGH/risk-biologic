@@ -17,10 +17,11 @@ import Question4 from "./Components/Level2/Question4";
 import Level3 from "./Components/Level3/Level3";
 import Feedback from "./Components/Level3/Feedback";
 import Feedback2 from "./Components/Level3/Feedback2";
+import Level4 from "./Components/Level4/Cards";
 
 export default function App() {
   return (
-    <div className="bg-slate-300 h-screen text-black flex">
+    <div>
       <AuthProvider>
         <Routes>
           <Route path="/Register" element={<Register />} />
@@ -70,6 +71,14 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <Level3 />
+              </ProtectedRoute>
+            }
+          />
+           <Route
+            path="/Level4"
+            element={
+              <ProtectedRoute>
+                <Level4 />
               </ProtectedRoute>
             }
           />

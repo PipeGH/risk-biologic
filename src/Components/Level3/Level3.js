@@ -3,10 +3,10 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { useNavigate } from "react-router-dom";
 import papelh from "../images/papelh.png";
 import carton from "../images/carton.png";
-import juice from "../images/juice.png";
 import botella from "../images/botella.png";
-import periodico from "../images/periodico.png";
 import vaso from "../images/vaso.png";
+import manzana from "../images/manzana.png";
+import cascara from "../images/cascara.png";
 import jeringa from "../images/jeringa.png";
 import guantes from "../images/guantes.png";
 import gasa from "../images/gasa.png";
@@ -17,15 +17,15 @@ export default function Level3() {
  
   const itemsFromBackend = [
     { id: "residuo1", content: papelh },
-    { id: "residuo2", content: juice },
-    { id: "residuo3", content: vaso },
-    { id: "residuo4", content: carton },
-    { id: "residuo5", content: botella },
-    { id: "residuo6", content: periodico },
-    { id: "residuo7", content: jeringa },
-    { id: "residuo8", content: guantes },
-    { id: "residuo9", content: gasa },
-  ];
+    { id: "residuo2", content: vaso },
+    { id: "residuo3", content: carton },
+    { id: "residuo4", content: botella },
+    { id: "residuo5", content: jeringa },
+    { id: "residuo6", content: guantes },
+    { id: "residuo7", content: gasa },
+    { id: "residuo8", content: manzana },
+    { id: "residuo9", content: cascara },
+  ].sort(() => Math.random() - 0.5)
   const columnsFromBackend = {
     list: {
       id: "list",
@@ -45,6 +45,11 @@ export default function Level3() {
     peligrosos: {
       id: "peligrosos",
       name: "Peligrosos",
+      items: [],
+    },
+    organicos: {
+      id: "organicos",
+      name: "Organicos",
       items: [],
     },
   };
@@ -72,96 +77,7 @@ export default function Level3() {
           items: destItems,
         },
       });
-      if (
-        destination.droppableId === "NoAprovOrd" &&
-        (draggableId === "residuo1" ||
-          draggableId === "residuo2" ||
-          draggableId === "residuo3")
-      ) {
-        setAlert("correcta");
-        setTimeout(function () {
-          setAlert("");
-        }, 800);
-        value.val = "papel higienico";
-        value.val = "caja jugo";
-        value.val = "vaso carton ";
-      } else if (
-        destination.droppableId !== "NoAprovOrd" &&
-        (draggableId === "residuo1" ||
-          draggableId === "residuo2" ||
-          draggableId === "residuo3")
-      ) {
-        setError("¿Estas seguro?");
-        setTimeout(function () {
-          setError("");
-        }, 800);
-        value.val = "incorrecto";
-        value.val2 = "incorrecto";
-        value.val3 = "incorrecto";
-        setColumns({
-          ...columns,
-        });
-      }
-      if (
-        destination.droppableId === "aprovechables" &&
-        (draggableId === "residuo4" ||
-          draggableId === "residuo5" ||
-          draggableId === "residuo6")
-      ) {
-        setAlert("correcta");
-        setTimeout(function () {
-          setAlert("");
-        }, 800);
-        value.val4 = "empaque carton";
-        value.val5 = "botella plastico";
-        value.val6 = "periodico";
-      } else if (
-        destination.droppableId !== "aprovechables" &&
-        (draggableId === "residuo4" ||
-          draggableId === "residuo5" ||
-          draggableId === "residuo6")
-      ) {
-        setError("¿Estas seguro?");
-        setTimeout(function () {
-          setError("");
-        }, 800);
-        value.val4 = "incorrecto";
-        value.val5 = "incorrecto";
-        value.val6= "incorrecto";
-        setColumns({
-          ...columns,
-        });
-      }
-      if (
-        destination.droppableId === "peligrosos" &&
-        (draggableId === "residuo7" ||
-          draggableId === "residuo8" ||
-          draggableId === "residuo9")
-      ) {
-        setAlert("correcta");
-        setTimeout(function () {
-          setAlert("");
-        }, 800);
-        value.val7 = "jeringa";
-        value.val8 = "guantes";
-        value.val9 = "gasa";
-      } else if (
-        destination.droppableId !== "peligrosos" &&
-        (draggableId === "residuo7" ||
-          draggableId === "residuo8" ||
-          draggableId === "residuo9")
-      ) {
-        setError("¿Estas seguro?");
-        setTimeout(function () {
-          setError("");
-        }, 800);
-        value.val7 = "incorrecto";
-        value.val8 = "incorrecto";
-        value.val9 = "incorrecto";
-        setColumns({
-          ...columns,
-        });
-      }
+      
     } else {
       const column = columns[source.droppableId];
       const copiedItems = [...column.items];
@@ -174,7 +90,225 @@ export default function Level3() {
           items: copiedItems,
         },
       });
+      
     }
+    if (
+      destination.droppableId === "NoAprovOrd" &&
+      draggableId === "residuo1" 
+      
+      ) {
+      setAlert("correcta");
+      setTimeout(function () {
+        setAlert("");
+      }, 800);
+      value.val = "papel higienico";
+ 
+    } 
+    else if (
+      destination.droppableId !== "NoAprovOrd" &&
+      draggableId === "residuo1" 
+    
+      ) {
+      setError("¿Estas seguro?");
+      setTimeout(function () {
+        setError("");
+      }, 800);
+      value.val = "incorrecto";
+      setColumns({
+        ...columns,
+      });
+    } 
+    else if (
+      destination.droppableId === "NoAprovOrd" &&
+      draggableId === "residuo2"
+      ) {
+      setAlert("correcta");
+      setTimeout(function () {
+        setAlert("");
+      }, 800);
+      value.val2 = "vaso carton";
+ 
+    }
+    else if (
+      destination.droppableId !== "NoAprovOrd" &&
+      draggableId === "residuo2"
+      ){
+      setError("¿Estas seguro?");
+      setTimeout(function () {
+        setError("");
+      }, 800);
+      value.val2 = "incorrecto";
+      setColumns({
+        ...columns,
+      });
+    } 
+    else if (
+      destination.droppableId === "aprovechables" &&
+      draggableId === "residuo3"
+      ) {
+      setAlert("correcta");
+      setTimeout(function () {
+        setAlert("");
+      }, 800);
+      value.val3 = "caja carton";
+ 
+    }
+    else if (
+      destination.droppableId !== "aprovechables" &&
+      draggableId === "residuo3"
+      ){
+      setError("¿Estas seguro?");
+      setTimeout(function () {
+        setError("");
+      }, 800);
+      value.val3 = "incorrecto";
+      setColumns({
+        ...columns,
+      });
+    } 
+    else if (
+      destination.droppableId === "aprovechables" &&
+      draggableId === "residuo4"
+      ) {
+      setAlert("correcta");
+      setTimeout(function () {
+        setAlert("");
+      }, 800);
+      value.val4 = "botella";
+ 
+    }
+    else if (
+      destination.droppableId !== "aprovechables" &&
+      draggableId === "residuo4"
+      ) {
+      setError("¿Estas seguro?");
+      setTimeout(function () {
+        setError("");
+      }, 800);
+      value.val4= "incorrecto";
+      setColumns({
+        ...columns,
+      });
+    } 
+    else if (
+      destination.droppableId === "peligrosos" &&
+      draggableId === "residuo5"
+      ) {
+      setAlert("correcta");
+      setTimeout(function () {
+        setAlert("");
+      }, 800);
+      value.val5 = "jeringa";
+    }
+    else if (
+      destination.droppableId !== "peligrosos" &&
+      draggableId === "residuo5"
+      ) {
+      setError("¿Estas seguro?");
+      setTimeout(function () {
+        setError("");
+      }, 800);
+      value.val5 = "incorrecto";
+      setColumns({
+        ...columns,
+      });
+    } 
+    else if (
+      destination.droppableId === "peligrosos" &&
+      draggableId === "residuo6"
+      ) {
+      setAlert("correcta");
+      setTimeout(function () {
+        setAlert("");
+      }, 800);
+      value.val6 = "guantes";
+ 
+    }
+    else if (
+      destination.droppableId !== "peligrosos" &&
+      draggableId === "residuo6"
+      ) {
+      setError("¿Estas seguro?");
+      setTimeout(function () {
+        setError("");
+      }, 800);
+      value.val6 = "incorrecto";
+      setColumns({
+        ...columns,
+      });
+    }
+      else if (
+        destination.droppableId === "peligrosos" &&
+        draggableId === "residuo7"
+        ) {
+        setAlert("correcta");
+        setTimeout(function () {
+          setAlert("");
+        }, 800);
+        value.val7 = "gasa";
+   
+      }
+      else if (
+        destination.droppableId !== "peligrosos" &&
+        draggableId === "residuo7"
+        ) {
+        setError("¿Estas seguro?");
+        setTimeout(function () {
+          setError("");
+        }, 800);
+        value.val7 = "incorrecto";
+        setColumns({
+          ...columns,
+        });
+      } 
+      else if (
+        destination.droppableId === "organicos" &&
+        draggableId === "residuo8"
+        ) {
+        setAlert("correcta");
+        setTimeout(function () {
+          setAlert("");
+        }, 800);
+        value.val8 = "cascara";
+   
+      }
+      else if (
+        destination.droppableId !== "organicos" &&
+        draggableId === "residuo8"
+        ) {
+        setError("¿Estas seguro?");
+        setTimeout(function () {
+          setError("");
+        }, 800);
+        value.val8 = "incorrecto";
+        setColumns({
+          ...columns,
+        });
+      } 
+      else if (
+        destination.droppableId === "organicos" &&
+        draggableId === "residuo9"
+        ) {
+        setAlert("correcta");
+        setTimeout(function () {
+          setAlert("");
+        }, 800);
+        value.val9 = "manzana";
+   
+      }
+      else  if (
+        destination.droppableId !== "organicos" &&
+        draggableId === "residuo9"
+        ){
+        setError("¿Estas seguro?");
+        setTimeout(function () {
+          setError("");
+        }, 800);
+        value.val9 = "incorrecto";
+        setColumns({
+          ...columns,
+        });
+      }
   };
 
   const [columns, setColumns] = useState(columnsFromBackend);
@@ -194,11 +328,10 @@ export default function Level3() {
   const [error, setError] = useState();
   const [alert, setAlert] = useState();
   const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(14);
+  const [seconds, setSeconds] = useState(19);
   const [areDisabled, setAreDisabled] = useState(false);
   const [stateModal, setStateModal] = useState(false);
 
-  itemsFromBackend.sort(() => Math.random() - 0.5);
 
   const handleSubmit2 = async (e) => {
     e.preventDefault();
@@ -274,18 +407,10 @@ export default function Level3() {
                 <div className="time_remaining">
                   {!areDisabled ? (
                     <h2>
-                      {minutes}:{seconds}
+                      Tiempo: {minutes}:{seconds}
                     </h2>
                   ) : (
-                    <h3>
-                      {minutes}:{seconds}
-                    </h3>
-                    /*
-                                    <button onClick={() => {
-                                      setTime(100);
-                                      setAreDisabled(false);
-                                      setColumns(columnsFromBackend);
-                                    }}>Reintentar</button>*/
+                    <h3>Se acabo tu tiempo</h3>
                   )}
                 </div>
                 <div>
@@ -337,33 +462,6 @@ export default function Level3() {
           })}
         </DragDropContext>
       </div>
-      {/*
-      <div >
-      {!areDisabled ? ( 
-          <form onSubmit={handleSubmit}>
-          <div class="button_next">
-          <input 
-          type="submit" 
-          value=" Continuar"
-          disabled={areDisabled}/> 
-          </div>
-        </form>
-        ) : (
-        <form onSubmit={handleSubmit}>
-          <div class="button_next">
-          <input 
-          type="submit" 
-          value=" Continuar"
-           onClick={() => {
-            setTime(0);
-
-           setStateModal(!stateModal);
-           }}/> 
-          </div>
-        </form>
-        )};
-      </div> 
-    */}
       {stateModal && (
         <div
           className="overlay_l3"
@@ -377,20 +475,18 @@ export default function Level3() {
                 <span className="span_l3">Tu resultado es el siguiente</span>
                 <br />
                 <span className="span_l3">Residuos No Aprovechables</span>
-                <img src={papelh} alt=""/>
-                <img src={juice} alt=""/>
-                <img src={vaso} alt=""/>
-
+                  <p>{value.val}</p>
+                  <p>{value.val2}</p>
                 <span className="span_l3">Residuos Aprovechables</span>
-                <img src={carton} alt=""/>
-                <img src={botella} alt=""/>
-                <img src={periodico} alt=""/>
-
+                <p>{value.val3}</p>
+                <p>{value.val4}</p>
                 <span className="span_l3">Residuos Peligrosos</span>
-                <img src={jeringa} alt=""/>
-                <img src={guantes} alt=""/>
-                <img src={gasa} alt=""/>
-
+                <p>{value.val7}</p>
+                  <p>{value.val8}</p>
+                  <p>{value.val9}</p>
+                  <span className="span_l3">Residuos Organicos</span>
+                  <p>{value.val5}</p>
+                  <p>{value.val6}</p>
                 <span className="span_l3">
                   Por favor, presiona el siguiente boton.
                 </span>
