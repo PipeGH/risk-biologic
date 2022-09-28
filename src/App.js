@@ -16,8 +16,11 @@ import Question3 from "./Components/Level2/Question3";
 import Question4 from "./Components/Level2/Question4";
 import Level3 from "./Components/Level3/Level3";
 import Feedback from "./Components/Level3/Feedback";
-import Feedback2 from "./Components/Level3/Feedback2";
 import Level4 from "./Components/Level4/Cards";
+import Video1 from './Components/MenuP/Video1';
+import Intro1 from './Components/Level1/Intro1';
+import Intro2 from './Components/Level2/Intro2';
+import Guia from './Components/MenuP/Guia';
 
 export default function App() {
   return (
@@ -25,7 +28,11 @@ export default function App() {
       <AuthProvider>
         <Routes>
           <Route path="/Register" element={<Register />} />
+          <Route path="/Guia" element={<Guia />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/Video1" element={<Video1 />} />
+          <Route path="/Intro1" element={<Intro1 />} />
+          <Route path="/Intro2" element={<Intro2 />} />
           <Route
             path="/Navbar"
             element={
@@ -87,14 +94,6 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <Feedback />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/Feedback2"
-            element={
-              <ProtectedRoute>
-                <Feedback2 />
               </ProtectedRoute>
             }
           />
