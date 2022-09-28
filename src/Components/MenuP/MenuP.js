@@ -9,12 +9,25 @@ export default function MenuP() {
       e.preventDefault();
       setError("");
       try{
-      navigate("/Level1");
+      navigate("/Intro1");
           
       } catch (error) {
         
         setError(error.message);
       }
+      
+    };
+    const handleSubmit2= async (e) => {
+      e.preventDefault();
+      setError("");
+      try{
+      navigate("/Guia");
+          
+      } catch (error) {
+        
+        setError(error.message);
+      }
+      
     };
    
   return (
@@ -24,13 +37,17 @@ export default function MenuP() {
             {error && <p class="alert1">{error}</p>}
             <br />
             <div class="container1">
-              <div class="title1">Bienvenido</div>
+              <div class="title1">¡Buena Suerte!</div>
               <div class="content1">
-                <form onSubmit={handleSubmit}>
-                  <div class="button1">
+                <form>
+                  <div class="button1" onClick={handleSubmit}>
                     <input type="submit" value=" Comenzar" />
                   </div>
+                  <div class="button1" onClick={handleSubmit2}>
+                    <input type="submit" value=" Intrucciones"/>
+                  </div>
                 </form>
+                
               </div>
             </div>
           </div>

@@ -2,33 +2,42 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Card from "./Card";
 import Navbar from "../Navbar/Navbar";
+import virus from "./../images/virus.png";
+import guardian from "./../images/guardian.png";
+import bacteria from "./../images/bacteria.png";
+import protozoo from "./../images/protozoo.png";
+import desinf from "./../images/desinfectante.png";
+import tapabocas from "./../images/tapabocas.png";
+import lavadom from "./../images/lav_manos3.png";
+import vacuna from "./../images/vacuna2.png";
+import audio from "../sounds/correct.mp3";
+import audio2 from "../sounds/incorrect.mp3";
 import "./Cards.css";
-
-function Cards() {
+export default function Cards() {
   const [items, setItems] = useState(
     [
-      { id: 1, img: "/img/html.png", stat: "" },
-      { id: 1, img: "/img/html.png", stat: "" },
-      { id: 2, img: "/img/css.png", stat: "" },
-      { id: 2, img: "/img/css.png", stat: "" },
-      { id: 3, img: "/img/js.png", stat: "" },
-      { id: 3, img: "/img/js.png", stat: "" },
-      { id: 4, img: "/img/scss.png", stat: "" },
-      { id: 4, img: "/img/scss.png", stat: "" },
-      { id: 5, img: "/img/react.png", stat: "" },
-      { id: 5, img: "/img/react.png", stat: "" },
-      { id: 6, img: "/img/vue.png", stat: "" },
-      { id: 6, img: "/img/vue.png", stat: "" },
-      { id: 7, img: "/img/angular.png", stat: "" },
-      { id: 7, img: "/img/angular.png", stat: "" },
-      { id: 8, img: "/img/nodejs.png", stat: "" },
-      { id: 8, img: "/img/nodejs.png", stat: "" },
+      { id: 1, img: virus, stat: "" },
+      { id: 1, img: virus, stat: "" },
+      { id: 2, img: guardian, stat: "" },
+      { id: 2, img: guardian, stat: "" },
+      { id: 3, img: bacteria, stat: "" },
+      { id: 3, img: bacteria, stat: "" },
+      { id: 4, img: protozoo , stat: "" },
+      { id: 4, img: protozoo , stat: "" },
+      { id: 5, img: desinf, stat: "" },
+      { id: 5, img: desinf, stat: "" },
+      { id: 6, img: tapabocas, stat: "" },
+      { id: 6, img: tapabocas, stat: "" },
+      { id: 7, img: lavadom, stat: "" },
+      { id: 7, img: lavadom, stat: "" },
+      { id: 8, img: vacuna, stat: "" },
+      { id: 8, img: vacuna, stat: "" },
     ].sort(() => Math.random() - 0.5)
   );
 
   const [prev, setPrev] = useState(-1);
   const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(20);
+  const [seconds, setSeconds] = useState(30);
   const [areDisabled, setAreDisabled] = useState(false);
   const [stateModal, setStateModal] = useState(false);
   const navigate = useNavigate();
@@ -44,7 +53,10 @@ function Cards() {
     val8: "sin encontrar",
   };
   const [value] = useState(valor);
-
+  const sound = new Audio();
+  sound.src = audio;
+  const sound2 = new Audio();
+  sound2.src = audio2;
   function check(current) {
     if (items[current].id === items[prev].id) {
       items[current].stat = "correct";
@@ -63,22 +75,69 @@ function Cards() {
       }, 1000);
     }
 
-    if (items[current].id === 1 && items[prev].id === 1) {
+    if ( items[prev].id === 1 && items[current].id === 1) {
       value.val = "pareja encontrada 1";
-    } else if (items[current].id === 2 && items[prev].id === 2) {
+      sound.play();
+    }
+    else if (items[prev].id === 1 && items[current].id !== 1) {
+      value.val = "pareja no encontrada 1";
+      sound2.play();
+    }
+    else if ( items[prev].id === 2 && items[current].id === 2) {
       value.val2 = "pareja encontrada 2";
-    } else if (items[current].id === 3 && items[prev].id === 3) {
+      sound.play();
+    }
+    else if (items[prev].id === 2 && items[current].id !== 2) {
+      value.val2 = "pareja no encontrada 2";
+      sound2.play();
+    }
+    else if ( items[prev].id === 3 && items[current].id === 3) {
       value.val3 = "pareja encontrada 3";
-    } else if (items[current].id === 4 && items[prev].id === 4) {
+      sound.play();
+    }
+    else if (items[prev].id === 3 && items[current].id !== 3) {
+      value.val3 = "pareja no encontrada 3";
+      sound2.play();
+    }
+    else if ( items[prev].id === 4 && items[current].id === 4) {
       value.val4 = "pareja encontrada 4";
-    } else if (items[current].id === 5 && items[prev].id === 5) {
-      value.val5 = "pareja encontrada 5 ";
-    } else if (items[current].id === 6 && items[prev].id === 6) {
-      value.val6 = "pareja encontrada 6 ";
-    } else if (items[current].id === 7 && items[prev].id === 7) {
-      value.val7 = "pareja encontrada 7 ";
-    } else if (items[current].id === 8 && items[prev].id === 8) {
+      sound.play();
+    }
+    else if (items[prev].id === 4 && items[current].id !== 4) {
+      value.val4 = "pareja no encontrada 4";
+      sound2.play();
+    }
+    else if ( items[prev].id === 5 && items[current].id === 5) {
+      value.val5 = "pareja encontrada 5";
+      sound.play();
+    }
+    else if (items[prev].id === 5 && items[current].id !== 5) {
+      value.val5 = "pareja no encontrada 5";
+      sound2.play();
+    }
+    else if ( items[prev].id === 6 && items[current].id === 6) {
+      value.val6 = "pareja encontrada 6";
+      sound.play();
+    }
+    else if (items[prev].id === 6 && items[current].id !== 6) {
+      value.val6 = "pareja no encontrada 6";
+      sound2.play();
+    }
+    else if ( items[prev].id === 7 && items[current].id === 7) {
+      value.val7 = "pareja encontrada 7";
+      sound.play();
+    }
+    else if (items[prev].id === 7 && items[current].id !== 7) {
+      value.val7 = "pareja no encontrada 7";
+      sound2.play();
+    }
+    else if ( items[prev].id === 8 && items[current].id === 8) {
       value.val8 = "pareja encontrada 8";
+      sound.play();
+    }
+    else if (items[prev].id === 8 && items[current].id !== 8) {
+      value.val8 = "pareja no encontrada 8";
+      sound2.play();
     }
   }
   function handleClick(id) {
@@ -92,42 +151,39 @@ function Cards() {
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      e.preventDefault();
-
+    try {     
       if (
         value.val === "sin encontrar" &&
         value.val2 === "sin encontrar" &&
         value.val3 === "sin encontrar" &&
         value.val4 === "sin encontrar" &&
-        value.val5 === "sin encontrar" &&
-        value.val6 === "sin encontrar" &&
-        value.val7 === "sin encontrar" &&
         value.val8 === "sin encontrar" 
       ) {
-        setTimeout(function(){
-          window.location.reload();
-          setMinutes(0);
-          setSeconds(40);
-          setAreDisabled(false);}, 100);
+        e.preventDefault();
+        setStateModal(false);
+        setAreDisabled(false);
+        setMinutes(0);
+        setSeconds(10);
       } else if (
         value.val === "pareja encontrada 1" &&
         value.val2 === "pareja encontrada 2" &&
         value.val3 === "pareja encontrada 3" &&
-        value.val4 === "pareja encontrada 4" &&
+        value.val4 === "pareja encontrada 4" && 
         value.val5 === "pareja encontrada 5" &&
         value.val6 === "pareja encontrada 6" &&
         value.val7 === "pareja encontrada 7" &&
         value.val8 === "pareja encontrada 8" 
       ) {
-        navigate("/Level1");
-        
+        sound.play();
+       
+        navigate("/")
+          
       } else {
         setTimeout(function(){
-            window.location.reload();
-            setMinutes(0);
-            setSeconds(40);
-            setAreDisabled(false);}, 100);
+          window.location.reload();
+          setMinutes(0);
+          setSeconds(10);
+          setAreDisabled(!stateModal);}, 100);
         
       }
     } catch (error) {
@@ -156,7 +212,7 @@ function Cards() {
     <div className="body-l4">
       <div className="Navbar-l4">
         <Navbar />
-
+        </div>
         <div className="time-remaining-l4">
           {!areDisabled ? (
             <h2>
@@ -176,7 +232,7 @@ function Cards() {
             />
           ))}
         </div>
-      </div>
+  
       {stateModal && (
         <div
           className="overlay-l4"
@@ -187,28 +243,28 @@ function Cards() {
             <div class="title1">Retroalimentacion</div>
             <div class="content-l4">
               <form onSubmit={handleSubmit}>
-                <span className="span-l4">Parejas encontradas</span>
+                <span className="span-l4">Parejas a encontrar:</span>
                 <br />
-                <span className="span-l4">Bacterias:</span>
+                <span className="span-l4">Virus</span>
                 <p>{value.val}</p>
-                <span className="span-l4">Virus:</span>
+                <span className="span-l4">Guardian</span>
                 <p>{value.val2}</p>
-                <span className="span-l4">Hongos:</span>
+                <span className="span-l4">Bacteria:</span>
                 <p>{value.val3}</p>
-                <span className="span-l4">Sarcoparasitos:</span>
+                <span className="span-l4">Protozoo:</span>
                 <p>{value.val4}</p>
-                <span className="span-l4">Protozoos y Herlmintos:</span>
+                <span className="span-l4">Jabon desinfectante</span>
                 <p>{value.val5}</p>
-                <span className="span-l4">Protozoos y Herlmintos:</span>
+                <span className="span-l4">Elemento de bioseguridad</span>
                 <p>{value.val6}</p>
-                <span className="span-l4">Protozoos y Herlmintos:</span>
+                <span className="span-l4">Lavado de manos</span>
                 <p>{value.val7}</p>
-                <span className="span-l4">Protozoos y Herlmintos:</span>
+                <span className="span-l4">Vacuna</span>
                 <p>{value.val8}</p>
                 <span className="span-l4">
                   Por favor, presiona el siguiente boton.
                 </span>
-                <input type="submit" value=" Continuar" className="button-l4" />
+                <input type="submit" value=" Siguiente" className="button-l4" />
               </form>
             </div>
           </div>
@@ -218,4 +274,3 @@ function Cards() {
   );
 }
 
-export default Cards;

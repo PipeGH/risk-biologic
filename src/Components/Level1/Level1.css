@@ -1,26 +1,13 @@
 @font-face {
   font-family: ARCO;
-  src: local('ARCO'), url('../../ARCO.ttf');
-}
-
+  src: local('ARCO'),url('../fonts/ARCO.ttf');
+}            
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "ARCO", sans-serif;
 }
-
-.body-l3 {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  font-family: sans-serif;
-  letter-spacing: 0.03em;
-  line-height: 1.6;
-
-}
-
 .title_g {
   position: relative;
   display: flex;
@@ -188,6 +175,7 @@
     position: fixed;
     width: 100%;
     z-index: 2;
+    top: 0;
   }
 
   .container {
@@ -196,5 +184,12 @@
 
   .container .next input[type="submit"] {
     margin-bottom: 20px;
+  }
+}
+@media (max-width:496px) {
+
+  .title_g{
+    top: 60px;
+    font-size: 25px;
   }
 }

@@ -1,0 +1,83 @@
+@font-face {
+    font-family: ARCO;
+    src: local('ARCO'),url('../fonts/ARCO.ttf');
+  }            
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "ARCO", sans-serif;
+  }
+  .body-pdf{
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    overflow: hidden;
+  }
+
+  .button-pdf input[type="submit"]{
+    position: relative;
+    float: right;
+    margin: 10px 0;
+    margin-bottom: 10px;
+    width: 200px;
+    height: 50px;
+    border: none;
+    background: linear-gradient(135deg, #d41e31, #491f8f);
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+  }
+  .container-pdf{
+    position: relative;
+    width: 100%;
+    height: 90%;
+  }
+  @media(max-width:496px){
+
+  
+  .container-pdf{
+
+      max-width:500px;
+      width: 100%;
+      height: 300px;
+      background-color: #fff;
+      padding: 25px 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+      -webkit-border-radius: 15px;
+      -moz-border-radius: 15px;
+      -ms-border-radius: 15px;
+      -o-border-radius: 15px;
+    }
+
+  a{
+  height: 100%;
+   width: 100%;
+   border-radius: 25px;
+   text-align: center;
+   top: 200px;
+   border: none;
+   color: #fff;
+   font-size: 20px;
+   font-weight: 500;
+   letter-spacing: 1px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   outline: none;
+  }
+}

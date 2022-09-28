@@ -1,28 +1,40 @@
-import React, { useState }from "react";
+import React, { useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
+import riesgo1 from "../images/riesgo1.png";
+import bioseguridad from "../images/bioseguridad.jpg"
+import desinfeccion from "../images/des.png";
+import residuos from "../images/residuos.png";
+import vacuna from "../images/vacuna.jpg";
+import autocuidado from "../images/autocuidado.jpg"
 import "./Level1.css";
+import audio from "../sounds/glosario.mp3";
+
 
 export default function Level1() {
  
 
   let img = [
-    "https://firebasestorage.googleapis.com/v0/b/biolog-risk-de075.appspot.com/o/img%2Friesgo1.png?alt=media&token=cf801ae4-cc8d-46b0-877a-eed7983beb62",
-    "https://firebasestorage.googleapis.com/v0/b/biolog-risk-de075.appspot.com/o/img%2Fbioseguridad.jpg?alt=media&token=77869895-e746-42ad-a7b8-6848ae3633f1",
-    "https://firebasestorage.googleapis.com/v0/b/biolog-risk-de075.appspot.com/o/img%2Fdes.png?alt=media&token=1e151a01-eb4e-4372-bd25-39437f62be08",
-    "https://firebasestorage.googleapis.com/v0/b/biolog-risk-de075.appspot.com/o/img%2Fresiduos.png?alt=media&token=6b670971-9ea8-412d-b75f-1f072398cebb",
-    "https://firebasestorage.googleapis.com/v0/b/biolog-risk-de075.appspot.com/o/img%2Fvacuna.jpg?alt=media&token=048d23f3-c181-43fb-83df-7c1f1f7043da",
-    "https://firebasestorage.googleapis.com/v0/b/biolog-risk-de075.appspot.com/o/img%2Fautocuidado.jpg?alt=media&token=9a994b33-e817-4cf5-a7d4-9c91cfb36378",
+    riesgo1,
+    bioseguridad,
+    desinfeccion,
+    residuos,
+    vacuna,
+    autocuidado
   ];
   const navigate = useNavigate();
-  
+  const sound = new Audio();
+  sound.src = audio;
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    navigate("/Question1");
+    sound.play();
+    navigate("/Intro2");
   };
-  
+  useEffect (() =>{
+ 
+    sound.play();
+  },);
   return (
     <div className="body-l1">
       <div className="Navbar-l1">
@@ -40,7 +52,7 @@ export default function Level1() {
               respiratoria, digestiva, sanguínea, piel o mucosas.
             </p>
           </div>
-          <img src={img[0]} alt="" />
+          <img src={img[0]} loading="lazy" alt="" />
         </div>
         <div className="card">
           <div className="description">
@@ -55,7 +67,7 @@ export default function Level1() {
               ambiente.
             </p>
           </div>
-          <img src={img[1]} alt="" />
+          <img src={img[1]} loading="lazy" alt="" />
         </div>
         <div className="card">
           <div className="description">
@@ -67,7 +79,7 @@ export default function Level1() {
               físicos o químicos.
             </p>
           </div>
-          <img src={img[2]} alt="" />
+          <img src={img[2]}  loading="lazy" alt="" />
         </div>
         <div className="card">
           <div className="description">
@@ -78,7 +90,7 @@ export default function Level1() {
               estado en contacto con pacientes o líquidos biológicos.
             </p>
           </div>
-          <img src={img[3]} alt="" />
+          <img src={img[3]} loading="lazy" alt="" />
         </div>
         <div className="card">
           <div className="description">
@@ -90,7 +102,7 @@ export default function Level1() {
               por dicho agente.
             </p>
           </div>
-          <img src={img[4]} alt="" />
+          <img src={img[4]} loading="lazy" alt="" />
         </div>
         <div className="card">
           <div className="description">
@@ -105,7 +117,7 @@ export default function Level1() {
               psicológico.
             </p>
           </div>
-          <img src={img[5]} alt="" />
+          <img src={img[5]}  loading="lazy" alt="" />
         </div>
         <form onSubmit={handleSubmit}>
           <div className="next">

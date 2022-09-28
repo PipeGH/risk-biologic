@@ -3,8 +3,8 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import preg2 from "../images/preg2.jpg"
-import audio  from "./clock.mp3";
-import audio2  from "./correct.mp3";
+import audio from "../sounds/correct.mp3";
+import audio2 from "../sounds/incorrect.mp3";
 import "./Question2.css";
 
 export default function Question2() {
@@ -59,6 +59,7 @@ export default function Question2() {
         draggableId === "opcion1" &&
         destination.droppableId === "respuestas"
       ) {
+        sound2.play();
         setError("¿Estas seguro?");
         setTimeout(function () {
           setError("");
@@ -71,7 +72,7 @@ export default function Question2() {
         draggableId === "opcion2" &&
         destination.droppableId === "respuestas"
       ) {
-        
+        sound2.play();
         setError("¿Estas seguro?");
         setTimeout(function () {
           setError("");
@@ -84,6 +85,7 @@ export default function Question2() {
         draggableId === "opcion3" &&
         destination.droppableId === "respuestas"
       ) {
+        sound2.play();
         setError("¿Estas seguro?");
         setTimeout(function () {
           setError("");
@@ -97,6 +99,7 @@ export default function Question2() {
         draggableId === "opcion4" &&
         destination.droppableId === "respuestas"
       ) {
+        sound2.play();
         setError("¿Estas seguro?");
         setTimeout(function () {
           setError("");
@@ -110,8 +113,8 @@ export default function Question2() {
         draggableId === "opcion5" &&
         destination.droppableId === "respuestas"
       ) {
+        sound.play();
         setAlert("correcta");
-        sound2.play();
         setTimeout(function () {
           setAlert("");
         }, 800);
@@ -120,6 +123,7 @@ export default function Question2() {
         draggableId === "opcion5" &&
         destination.droppableId === "list"
       ) {
+        sound2.play();
         setError("¿Estas seguro?");
         setTimeout(function () {
           setError("");
@@ -136,6 +140,7 @@ export default function Question2() {
         draggableId === "opcion6" &&
         destination.droppableId === "respuestas"
       ) {
+        sound2.play();
         setError("¿Estas seguro?");
         setTimeout(function () {
           setError("");
@@ -173,13 +178,14 @@ export default function Question2() {
   const [error, setError] = useState();
   const [alert, setAlert] = useState();
   const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(10);
+  const [seconds, setSeconds] = useState(25);
   const [areDisabled, setAreDisabled] = useState(false);
   const [stateModal, setStateModal] = useState(false);
   const [stateModal2] = useState(false);
 
   const sound = new Audio();
   sound.src = audio;
+
   const sound2 = new Audio();
   sound2.src = audio2;
 
@@ -197,10 +203,10 @@ export default function Question2() {
         value.val5 === "sin arrastrar" &&
         value.val6 === "sin arrastrar"
       ) {
-        sound2.play();
+        sound.play();
         setStateModal(!stateModal);
         setMinutes(0);
-        setSeconds(10);
+        setSeconds(25);
         setAreDisabled(false);
       } else if (
         (value.val === "incorrecta" ||
@@ -215,12 +221,16 @@ export default function Question2() {
         (value.val6 === "incorrecta" ||
         value.val6 === "sin arrastrar")
        ){
-        sound2.play();
+        sound.play();
         navigate("/Question3");
         setStateModal(!stateModal);
       } else {
-        sound2.play();
-        navigate("/Feedback2");
+        sound.play();
+        setTimeout(function(){
+          window.location.reload();
+          setMinutes(0);
+          setSeconds(25);
+          setAreDisabled(!stateModal);}, 100);
       }
     } catch (error) {
       setError(error.message);
@@ -250,12 +260,6 @@ export default function Question2() {
     return () => clearInterval(timer);
   }, [minutes, seconds]);
 
-  if (minutes === 0 && seconds === 59) {
-    sound.play();
-  }
-  if (minutes === 0 && seconds === 0) {
-    sound.playing = false;
-  }
   itemsFromBackend.sort(() => Math.random() - 0.5);
   return (
     <div className="body-q2">
@@ -344,30 +348,18 @@ export default function Question2() {
               })}
             </DragDropContext>
             <div>
-              {!areDisabled ? (
-                <form onSubmit={handleSubmit2}>
-                  <div class="button_next2">
-                    <input
-                      type="submit"
-                      value=" Continuar"
-                      disabled={areDisabled}
-                    />
-                  </div>
-                </form>
-              ) : (
                 <form onSubmit={handleSubmit2}>
                   <div class="button_next2">
                     <input
                       type="submit"
                       value=" Continuar"
                       onClick={() => {
-                        sound2.play();
+                        sound.play();
                         setStateModal(!stateModal);
                       }}
                     />
                   </div>
                 </form>
-              )}
             </div>
           </div>
         </>
@@ -394,9 +386,9 @@ export default function Question2() {
                 <span className="span-q2">Después de estar en contacto con el entorno del paciente:</span>
                 <p >{value.val4}</p>
                 <span className="span-q2">Después de realizar una tarea limpia o aséptica:</span>
-                <p className="correct">{value.val5}</p>
-                <span className="span-q2">Después de contacto con el paciente:</span>
-                <p className ="valor">{value.val6}</p>
+                <p>{value.val5}</p>
+                <span className="span-q2">Después de contacto con paciente:</span>
+                <p>{value.val6}</p>
                 <span className="span-q2">
                   Por favor, presiona el siguiente boton.
                 </span>

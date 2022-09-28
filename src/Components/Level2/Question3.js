@@ -3,8 +3,8 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import preg3 from "../images/lav_manos.jpg";
-import audio from "./clock.mp3";
-import audio2 from "./correct.mp3";
+import audio from "../sounds/correct.mp3";
+import audio2 from "../sounds/incorrect.mp3";
 import "./Question3.css";
 
 export default function Question3() {
@@ -14,7 +14,6 @@ export default function Question3() {
     { id: "opcion3", content: "Frotar las palmas entre si." },
     { id: "opcion4", content: "Frotar la palma de la mano derecha contra el dorso de la mano izquierda." },
     { id: "opcion5", content: "Frotar las palmas de las manos entre sí , con los dedos entrelazados." },
-    { id: "opcion6", content: "Frotar el dorso de los dedos de una mano contra la palma de la mano opuesta." },
     
    
   ];
@@ -59,8 +58,8 @@ export default function Question3() {
     if (draggableId === "opcion1" && 
       (destination.droppableId ==="respuestas")&& 
       destination.index === 0) {
+        sound.play();
         setAlert("correcta");
-        sound2.play();
         setTimeout(function () {
           setAlert("");
         }, 800);
@@ -73,6 +72,7 @@ export default function Question3() {
       (destination.droppableId ==="respuestas")&& 
       destination.index !== 0
     ) {
+      sound2.play();
       setError("¿Estas seguro?");
       setTimeout(function () {
         setError("");
@@ -86,8 +86,8 @@ export default function Question3() {
     draggableId === "opcion2" && 
     (destination.droppableId ==="respuestas")&& 
     destination.index === 1) {
+      sound.play();
       setAlert("correcta");
-      sound2.play();
       setTimeout(function () {
         setAlert("");
       }, 800);
@@ -98,6 +98,7 @@ export default function Question3() {
     (destination.droppableId ==="respuestas")&& 
     destination.index !== 1
     ) {
+      sound2.play();
       setError("¿Estas seguro?");
       setTimeout(function () {
         setError("");
@@ -111,8 +112,8 @@ export default function Question3() {
     draggableId === "opcion3" && 
     (destination.droppableId ==="respuestas")&& 
     destination.index === 2) {
+      sound.play();
       setAlert("correcta");
-      sound2.play();
       setTimeout(function () {
         setAlert("");
       }, 800);
@@ -122,6 +123,7 @@ export default function Question3() {
     (destination.droppableId ==="respuestas")&& 
     destination.index !== 2
   ) {
+    sound2.play();
     setError("¿Estas seguro?");
     setTimeout(function () {
       setError("");
@@ -135,8 +137,8 @@ export default function Question3() {
     draggableId === "opcion4" && 
     (destination.droppableId ==="respuestas")&& 
     destination.index === 3) {
+      sound.play();
       setAlert("correcta");
-      sound2.play();
       setTimeout(function () {
         setAlert("");
       }, 800);
@@ -146,6 +148,7 @@ export default function Question3() {
     (destination.droppableId ==="respuestas")&& 
     destination.index !== 3
   ) {
+    sound2.play();
     setError("¿Estas seguro?");
     setTimeout(function () {
       setError("");
@@ -160,7 +163,7 @@ export default function Question3() {
     (destination.droppableId ==="respuestas")&& 
     destination.index === 4) {
       setAlert("correcta");
-      sound2.play();
+      sound.play();
       setTimeout(function () {
         setAlert("");
       }, 800);
@@ -170,6 +173,7 @@ export default function Question3() {
     (destination.droppableId ==="respuestas")&& 
     destination.index !== 4
   ) {
+    sound2.play();
     setError("¿Estas seguro?");
     setTimeout(function () {
       setError("");
@@ -179,30 +183,7 @@ export default function Question3() {
     });
     value.val5 = "incorrecta";
     }
-    else if (
-    draggableId === "opcion6" &&
-    (destination.droppableId ==="respuestas")&&  
-    destination.index === 5) {
-      setAlert("correcta");
-      sound2.play();
-      setTimeout(function () {
-        setAlert("");
-      }, 800);
-    value.val6 = "correcta";
-  } else if (
-    draggableId === "opcion6" &&
-    (destination.droppableId ==="respuestas")&& 
-    destination.index !== 5
-  ) {
-    setError("¿Estas seguro?");
-    setTimeout(function () {
-      setError("");
-    }, 1000);
-    setColumns({
-      ...columns,
-    });
-    value.val6 = "incorrecta";
-    }
+    
     else {
       const column = columns[source.droppableId];
       const copiedItems = [...column.items];
@@ -224,14 +205,13 @@ export default function Question3() {
     val3: "sin arrastrar",
     val4: "sin arrastrar",
     val5: "sin arrastrar",
-    val6: "sin arrastrar",
   };
   const [value] = useState(valor);
   const navigate = useNavigate();
   const [error, setError] = useState();
   const [alert, setAlert] = useState();
   const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(30);
+  const [seconds, setSeconds] = useState(50);
   const [areDisabled, setAreDisabled] = useState(false);
   const [stateModal, setStateModal] = useState(false);
   const [stateModal2] = useState(false);
@@ -252,28 +232,30 @@ export default function Question3() {
         value.val2 === "sin arrastrar" &&
         value.val3 === "sin arrastrar" &&
         value.val4 === "sin arrastrar" &&
-        value.val5 === "sin arrastrar" &&
-        value.val6 === "sin arrastrar"
+        value.val5 === "sin arrastrar"
       ) {
-        sound2.play();
+        sound.play();
         setStateModal(!stateModal);
         setMinutes(0);
-        setSeconds(30);
+        setSeconds(50);
         setAreDisabled(false);
       } else if (
         value.val === "correcta" &&
         value.val2 === "correcta" &&
         value.val3 === "correcta" &&
         value.val4 === "correcta" &&
-        value.val5 === "correcta" &&
-        value.val6 === "correcta"
+        value.val5 === "correcta" 
       ) {
-        sound2.play();
-        navigate("/Level3");
+        sound.play();
+        navigate("/Question4");
         setStateModal(!stateModal);
       } else {
-        sound2.play();
-        navigate("/Feedback2");
+        sound.play();
+        setTimeout(function(){
+          window.location.reload();
+          setMinutes(0);
+          setSeconds(50);
+          setAreDisabled(!stateModal);}, 100);
       }
     } catch (error) {
       setError(error.message);
@@ -302,12 +284,6 @@ export default function Question3() {
     return () => clearInterval(timer);
   }, [minutes, seconds]);
 
-  if (minutes === 0 && seconds === 59) {
-    sound.play();
-  }
-  if (minutes === 0 && seconds === 0) {
-    sound.playing = false;
-  }
   itemsFromBackend.sort(() => Math.random() - 0.5);
   return (
     <div className="body-q3">
@@ -324,8 +300,9 @@ export default function Question3() {
             <p>
               En la iniciativa "Salve Vidas: límpiese las manos", según la
               Organización Mundial de la Salud (OMS) y la Organización
-              Panamericana de la salud (OPS) ¿Cuántos son los pasos del lavado
-              adecuado de manos?
+              Panamericana de la salud (OPS) ¿Cual es el orden de los primeros
+              5 pasos?
+
             </p>
             <div>
               <img src={preg3} alt="" />
@@ -347,7 +324,7 @@ export default function Question3() {
               {Object.entries(columns).map(([columnId, column], index) => {
                 return (
                   <div key={columnId} className="dd-container-q3">
-                    <h3 className="col_name">{column.name}</h3>
+                    <h3>{column.name}</h3>
                     <div>
                       <Droppable
                         droppableId={columnId}
@@ -397,30 +374,18 @@ export default function Question3() {
               })}
             </DragDropContext>
             <div>
-              {!areDisabled ? (
-                <form onSubmit={handleSubmit2}>
-                  <div className="button_next3">
-                    <input
-                      type="submit"
-                      value=" Continuar"
-                      disabled={areDisabled}
-                    />
-                  </div>
-                </form>
-              ) : (
                 <form onSubmit={handleSubmit2}>
                   <div className="button_next3">
                     <input
                       type="submit"
                       value=" Continuar"
                       onClick={() => {
-                        sound2.play();
+                        sound.play();
                         setStateModal(!stateModal);
                       }}
                     />
                   </div>
                 </form>
-              )}
             </div>
           </div>
         </>
@@ -448,8 +413,6 @@ export default function Question3() {
                 <p>{value.val4}</p>
                 <span className="span-q3">Frotar las palmas de las manos entre sí , con los dedos entrelazados.</span>
                 <p>{value.val5}</p>
-                <span className="span-q3">Frotar el dorso de los dedos de una mano contra la palma de la mano opuesta.</span>
-                <p>{value.val6}</p>
                 <span className="span-q3">
                   Por favor, presiona el siguiente boton.
                 </span>

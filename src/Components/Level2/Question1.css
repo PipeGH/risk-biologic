@@ -1,6 +1,6 @@
 @font-face {
   font-family: ARCO;
-  src: local('ARCO'),url('../../ARCO.ttf');
+  src: local('ARCO'),url('../fonts/ARCO.ttf');
 }            
 * {
   margin: 0;
@@ -9,17 +9,14 @@
   font-family: "ARCO", sans-serif;
 }
 .body-q1{
-  margin: 0;
-  padding: 0;
   width: 100%;
   height: 100%;
-  font-family: sans-serif;
   letter-spacing: 0.03em;
   line-height: 1.6;
-  overflow: hidden;
   background-image: url("../images/residuos2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
 }
 .question1{
   position: relative;
@@ -27,7 +24,6 @@
   width: 100%;
   margin: 0px auto;
   border: none;
- 
   border-radius:10px;
   -webkit-border-radius:10px;
   -moz-border-radius:10px;
@@ -52,21 +48,21 @@
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
 }
-.question1 .time-remaining{
+.question1 .time-remaining-q1{
   top: 110px;
   float: right;
   left:350px;
  }
- .question1 .time-remaining h2{
+ .question1 .time-remaining-q1 h2{
   margin-left: 80px;
   margin-top: -20px;
   padding-top: 20px;
   font-size: 20px;
-  color: #00C853;
+  color: #121212;
   font-weight: 600px;
   margin-bottom: 10px;
  }
- .question1 .time-remaining h3{
+ .question1 .time-remaining-q1 h3{
   margin-left: 80px;
   margin-top: -20px;
   padding-top: 20px;
@@ -129,6 +125,7 @@
   background: #fff;
   margin: 20px 5px;
   padding: 5px 5px 5px;
+  text-align: center;
   border: none;
   border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -137,15 +134,18 @@
   -o-border-radius: 5px;
 }
 .drag-container-q1 span{
-  font-size: 12px;
+  font-size: 15px;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .button_next1 input[type="submit"]{
   position: relative;
   float: right;
   margin: -20px 40px;
+  margin-bottom: 40px;
   width: 20%;
-  height: 20%;
+  height: 40px;
   border: none;
   background: linear-gradient(135deg, #d41e31, #491f8f);
   color: #fff;
@@ -167,44 +167,7 @@
  color: #111;
  }
  
-.alert-q1 {
-  position: absolute;
-  background-color: #00c853;
-  margin: 490px 550px;
-  padding-top: 10px;
-  width: 15%;
-  height: 6%;
-  outline: none;
-  font-size: 17px;
-  border:none;
-  z-index: 1;
-  text-align: center;
-  border-radius: 15px 15px 0 0;
-  box-shadow: 0px 15px 20px rgba(0,0,0,0.3);
-  -webkit-border-radius: 15px 15px 0 0;
-  -moz-border-radius: 15px 15px 0 0;
-  -ms-border-radius: 15px 15px 0 0;
-  -o-border-radius: 15px 15px 0 0;
-}
- .error-q1 {
-  position: absolute;
-  background-color: #F08080;
-  margin: 490px 550px;
-  padding-top: 10px;
-  width: 15%;
-  height: 6%;
-  outline: none;
-  font-size: 17px;
-  border:none;
-  z-index: 1;
-  text-align: center;
-  border-radius: 15px 15px 0 0;
-  box-shadow: 0px 15px 20px rgba(0,0,0,0.3);
-  -webkit-border-radius: 15px 15px 0 0;
-  -moz-border-radius: 15px 15px 0 0;
-  -ms-border-radius: 15px 15px 0 0;
-  -o-border-radius: 15px 15px 0 0;
-}
+
 .overlay-q1{
   width: 100vw;
   height: 100vh;
@@ -223,16 +186,16 @@
   align-items: center;
   max-width: 600px;
   width: 100%;
-  height: 75vh;
+  height: 78vh;
   margin-top: 40px;
   justify-content: center;
   padding: 25px 40px;
   border-radius: 10%;
   box-shadow:  0px 7px 29px 0px rgba(100, 100, 111, 0.2);
-  -webkit-border-radius: 10%;
-  -moz-border-radius: 10%;
-  -ms-border-radius: 10%;
-  -o-border-radius: 10%;
+  -webkit-border-radius:;
+  -moz-border-radius:;
+  -ms-border-radius:;
+  -o-border-radius:;
 }
 .container-q1 .title1{
   font-size: 22px;
@@ -246,7 +209,7 @@
     margin: 0 auto;
   }
   .container-q1 p{
-    color: #00C853;
+    color: #71b7e6;
     font-size: 17px;
     width: 50%;
     border-radius:5px;
@@ -257,10 +220,14 @@
     -ms-border-radius:5px;
     -o-border-radius:5px;
 }
+.container-q1 p:nth-child(8){
+  color:#00C853;
+}
 
  .container-q1 .button-q1{
   max-width: 300px;
   width: 100%;
+  height: 40px;
   border-radius: 25px;
   margin-top: 10px;
   margin-left:100px;
@@ -308,7 +275,7 @@
     width: 80%;
     height: 100vh;
   }
-  .question1 .time-remaining h3{
+  .question1 .time-remaining-q1 h3{
       margin: 0px 10px;
       font-size: 14px;
   }
@@ -330,7 +297,6 @@
   }
   .drag-container-q1{
     display: flex;
-    overflow-x: auto;
     width: 95%;
     margin-left: 20px;
     margin-top:0;
@@ -342,24 +308,14 @@
     margin: 20px 10px;
   }
   .drag-container-q1 span{
-    font-size: 8.5px;
+    font-size: 12px;
     padding: auto;
     border-radius:15px;
-    -webkit-border-radius:15px;
-    -moz-border-radius:15px;
-    -ms-border-radius:15px;
-    -o-border-radius:15px;
-  } 
-  .alert-q1{
-    top: 462px;
-    left: 330px;
-
-  }
-   .error-q1{
-    width: 30%;
-    top: 462px;
-    left: 220px;
-  }
+    -webkit-border-radius:;
+    -moz-border-radius:;
+    -ms-border-radius:;
+    -o-border-radius:;
+} 
   .overlay-q1{
     z-index: 1;
     display:fixed;
@@ -367,7 +323,7 @@
   .container-q1{
     width: 500px;
     margin-top: 40px;
-    height: 75vh;
+    height: 80vh;
   }
   .container-q1 .span-q1{
     font-size: 16px;
@@ -405,16 +361,17 @@
       float: right;
       margin-right: 20px;
   }
-  .question1 .time-remaining {
-      margin-left: 50px;
+  .question1 .time-remaining-q1 {
+      float: left;
       top: 295px;
       z-index: 1;
     }
-    .question1 .time-remaining h2{
-      font-size: 13px;
+    .question1 .time-remaining-q1 h2{
+      margin: 10px 5px;
+      font-size: 18px;
     }
-    .question1 .time-remaining h3{
-      font-size: 13px;
+    .question1 .time-remaining-q1 h3{
+      font-size: 15px;
     }
   .app-container-q1{
     width: 85%;
@@ -433,18 +390,18 @@
     margin: 0px 10px;
 }
   .drop-container-q1{
-    width: 50%;
-    height: 50%;
+    width: 100px;
+    height: 110px;
   }
   .drag-container-q1 span{
-    font-size: 8.5px;
+    font-size: 9px;
     margin-left: 5px;
     border-radius: 4px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
- }
+}
  
   .button_next1 input[type="submit"]{
     left:40px;
@@ -452,25 +409,17 @@
     width: 180px;
     font-size: 16px;
   }
-  .alert-q1{
-   width: 30%;
-   top: 530px;
-   left:190px;
-  }
-  .error-q1{
-   width: 30%;
-   top: 530px;
-   left: 195px;
-
-  }
+ 
+   
   .overlay-q1{
     z-index: 2;
     
   }
   .container-q1{
     margin-top: 40px;
-    max-width: 90%;
-    height: 70vh;
+    margin-left: -20px;
+    width: 90%;
+    height: 78vh;
   }
   .container-q1 .span-q1{
     font-size: 16px;
@@ -483,10 +432,11 @@
   }
   .content-q1 form .button-q1{
     width: 85%;
-    margin-left: 45px;
+    margin-left: 25px;
   }
 }
 @media(max-width: 496px){
+  
   .Navbar-q1{
     top:0;
     position: fixed;
@@ -495,8 +445,9 @@
   }
   .question1{
     width: 80%;
-     top:50px;
+     top:100px;
     align-items: center;
+    background-color: transparent;
   }
   .question1 p{
     font-size: 12px;
@@ -504,14 +455,17 @@
  
   .app-container-q1{
     width: 80%;
+    
   }
   .dd-container-q1{
     height: 18%;
   }
   .dd-container-q1:nth-child(1){
+    top:20px;
     margin: 130px -4px;
   }
   .dd-container-q1:nth-child(2){
+    top:20px;
     margin: -80px -4px;
   }
  
@@ -519,12 +473,18 @@
     margin: 0px 10px;
     width: 95%;
     height: 10vh;
-    overflow-x: scroll; 
+    
 }
+ .drop-container-q1{
+  margin-left: -5px;
+  width: 80px;
+  height: 60px;
+  align-items: center;
+ }
+
   .drag-container-q1 span{
-  
-    font-size:5px;
-    margin-left:1px;
+    font-size:6px;
+    text-align: left;
     border-radius:4px;
     -webkit-border-radius:4px;
     -moz-border-radius:4px;
@@ -532,29 +492,21 @@
     -o-border-radius:4px;
 }
   .button_next1 input[type="submit"]{
+    top:160px;
     width: 50%;
     float: right;
-    font-size: 18px;
+    font-size: 16px;
   }
-  .question1 .time-remaining h2{
-    margin-top: 10px;
-    font-size: 12px;
+  .question1 .time-remaining-q1 h2{
+    margin-top: 20px;
+    font-size: 14px;
   }
-  .question1 .time-remaining h3{
+  .question1 .time-remaining-q1 h3{
     margin-top: 10px;
     font-size: 12px;
     }
-    .alert-q1{
-      width: 40%;
-      top: 480px;
-      left:140px;
-     }
-     .error-q1{
-      width: 50%;
-      top: 480px;
-      left: 125px;
-   
-     }
+     
+     
   .overlay-q1{
     z-index: 1;
     display:fixed;
@@ -562,7 +514,7 @@
   .container-q1{
     top: -40px;
     width:95%;
-    height: 47vh;
+    height: 60%;
   }
   .container-q1 .title1{
     font-size: 13px;
@@ -578,9 +530,11 @@
     margin: 5px auto;
   }
   .content-q1 form .button-q1{
-    width:230px;
+    width:90%;
+    height: 50px;
     margin-left: 15px;
     font-size: 18px;
+   
   }
 }
 

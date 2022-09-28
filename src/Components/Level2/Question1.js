@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
-import  residuos from "../images/residuos.png";
-import audio from "./clock.mp3";
-import audio2 from "./correct.mp3";
+import residuos from "../images/residuos.png";
+import audio from "../sounds/correct.mp3";
+import audio2 from "../sounds/incorrect.mp3";
 import "./Question1.css";
 
 export default function Question1() {
@@ -52,10 +52,11 @@ export default function Question1() {
         },
       });
 
-       if (
+      if (
         draggableId === "opcion1" &&
         destination.droppableId === "respuestas"
       ) {
+        sound2.play();
         setError("¿Estas seguro?");
         setTimeout(function () {
           setError("");
@@ -68,6 +69,7 @@ export default function Question1() {
         draggableId === "opcion2" &&
         destination.droppableId === "respuestas"
       ) {
+        sound2.play();
         setError("¿Estas seguro?");
         setTimeout(function () {
           setError("");
@@ -76,11 +78,11 @@ export default function Question1() {
           ...columns,
         });
         value.val2 = "incorrecta";
-        
       } else if (
         draggableId === "opcion3" &&
         destination.droppableId === "respuestas"
       ) {
+        sound.play();
         setAlert("Correcta");
         setTimeout(function () {
           setAlert("");
@@ -90,6 +92,7 @@ export default function Question1() {
         draggableId === "opcion4" &&
         destination.droppableId === "respuestas"
       ) {
+        sound2.play();
         setError("¿Estas seguro?");
         setTimeout(function () {
           setError("");
@@ -98,8 +101,8 @@ export default function Question1() {
         setColumns({
           ...columns,
         });
-      } 
-  }else {
+      }
+    } else {
       const column = columns[source.droppableId];
       const copiedItems = [...column.items];
       const [removed] = copiedItems.splice(source.index, 1);
@@ -125,10 +128,10 @@ export default function Question1() {
   const [error, setError] = useState();
   const [alert, setAlert] = useState();
   const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(10);
+  const [seconds, setSeconds] = useState(20);
   const [areDisabled, setAreDisabled] = useState(false);
   const [stateModal, setStateModal] = useState(false);
-  const [stateModal1, setStateModal1] = useState(false);
+  const [stateModal1] = useState(false);
 
   const sound = new Audio();
   sound.src = audio;
@@ -146,25 +149,27 @@ export default function Question1() {
         value.val3 === "sin arrastrar" &&
         value.val4 === "sin arrastrar"
       ) {
-        sound2.play();
+        sound.play();
         setStateModal(!stateModal);
         setMinutes(0);
-        setSeconds(10);
+        setSeconds(20);
         setAreDisabled(false);
       } else if (
-        (value.val === "incorrecta" ||
-         value.val === "sin arrastrar") &&
-        (value.val2 === "incorrecta" ||
-         value.val2 === "sin arrastrar") &&
-         (value.val3 === "correcta") &&
-        (value.val4 === "incorrecta" ||
-         value.val4 === "sin arrastrar")){
-        sound2.play();
+        (value.val === "incorrecta" || value.val === "sin arrastrar") &&
+        (value.val2 === "incorrecta" || value.val2 === "sin arrastrar") &&
+        value.val3 === "correcta" &&
+        (value.val4 === "incorrecta" || value.val4 === "sin arrastrar")
+      ) {
+        sound.play();
         navigate("/Question2");
         setStateModal(!stateModal);
       } else {
-        sound2.play();
-        navigate("/Feedback2");
+        setTimeout(function () {
+          window.location.reload();
+          setMinutes(0);
+          setSeconds(20);
+          setAreDisabled(!stateModal);
+        }, 100);
       }
     } catch (error) {
       setError(error.message);
@@ -174,6 +179,7 @@ export default function Question1() {
     try {
       e.preventDefault();
       setError("");
+      
     } catch (error) {}
   };
 
@@ -188,18 +194,11 @@ export default function Question1() {
         setMinutes(0);
         setSeconds(0);
         setAreDisabled(true);
+      
       }
     }, 1000);
     return () => clearInterval(timer);
   }, [minutes, seconds]);
-
-  if (minutes === 0 && seconds === 59) {
-    sound.play();
-  }
-  if (minutes === 0 && seconds === 0) {
-    sound.playing = false;
-    
-  }
 
   return (
     <div className="body-q1">
@@ -207,18 +206,21 @@ export default function Question1() {
         <Navbar />
       </div>
       <span>
-        {(error && <p class="error-q1">{error}</p>) ||
-          (alert && <p class="alert-q1">{alert}</p>)}
+        {(error && <p class="error-q2">{error}</p>) ||
+          (alert && <p class="alert-q2">{alert}</p>)}
       </span>
       {!stateModal1 && (
         <>
           <div className="question1">
             <p>
-            Según la nueva resolución 2184 de 2019 sobre la clasificación de residuos hospitalarios,
-            ¿donde se debe desechar las agujas previamente contaminadas?
+              Según la nueva resolución 2184 de 2019 sobre la clasificación de
+              residuos hospitalarios, ¿donde se debe desechar las agujas
+              previamente contaminadas?
             </p>
-            <div><img src={residuos} alt="" /></div>
-            <div className="time-remaining">
+            <div>
+              <img src={residuos} alt="" />
+            </div>
+            <div className="time-remaining-q1">
               {!areDisabled ? (
                 <h2>
                   Tiempo: {minutes}:{seconds}
@@ -285,30 +287,18 @@ export default function Question1() {
               })}
             </DragDropContext>
             <div>
-              {!areDisabled ? (
-                <form onSubmit={handleSubmit2}>
-                  <div class="button_next1">
-                    <input
-                      type="submit"
-                      value=" Continuar"
-                      disabled={areDisabled}
-                    />
-                  </div>
-                </form>
-              ) : (
                 <form onSubmit={handleSubmit2}>
                   <div class="button_next1">
                     <input
                       type="submit"
                       value=" Continuar"
                       onClick={() => {
-                        sound2.play();
+                        sound.play();
                         setStateModal(!stateModal);
                       }}
                     />
                   </div>
                 </form>
-              )}
             </div>
           </div>
         </>

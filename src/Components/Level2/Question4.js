@@ -3,8 +3,8 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import residuos2 from "../images/residuos2.jpg";
-import audio from "./clock.mp3";
-import audio2 from "./correct.mp3";
+import audio from "../sounds/correct.mp3";
+import audio2 from "../sounds/incorrect.mp3";
 import "./Question4.css";
 
 export default function Question4() {
@@ -58,8 +58,8 @@ export default function Question4() {
         draggableId === "opcion1" &&
         destination.droppableId === "respuestas"
       ) {
+        sound.play();
         setAlert("correcta");
-        sound2.play();
         setTimeout(function () {
           setAlert("");
         }, 800);
@@ -70,6 +70,7 @@ export default function Question4() {
         draggableId === "opcion1" &&
         destination.droppableId !== "respuestas"
       ) {
+        sound2.play();
         setError("¿Estas seguro?");
         setTimeout(function () {
           setError("");
@@ -82,8 +83,8 @@ export default function Question4() {
         draggableId === "opcion2" &&
         destination.droppableId === "respuestas"
       ) {
+        sound.play();
         setAlert("correcta");
-        sound2.play();
         setTimeout(function () {
           setAlert("");
         }, 800);
@@ -93,6 +94,7 @@ export default function Question4() {
         draggableId === "opcion2" &&
         destination.droppableId !== "respuestas"
       ) {
+        sound2.play();
         setError("¿Estas seguro?");
         setTimeout(function () {
           setError("");
@@ -105,8 +107,8 @@ export default function Question4() {
         draggableId === "opcion3" &&
         destination.droppableId === "respuestas"
       ) {
+        sound.play();
         setAlert("correcta");
-        sound2.play();
         setTimeout(function () {
           setAlert("");
         }, 800);
@@ -116,6 +118,7 @@ export default function Question4() {
         draggableId === "opcion3" &&
         destination.droppableId !== "respuestas"
       ) {
+        sound2.play();
         setError("¿Estas seguro?");
         setTimeout(function () {
           setError("");
@@ -128,6 +131,7 @@ export default function Question4() {
         draggableId === "opcion4" &&
         destination.droppableId === "respuestas"
       ) {
+        sound2.play();
         setError("¿Estas seguro?");
         setTimeout(function () {
           setError("");
@@ -142,8 +146,8 @@ export default function Question4() {
         draggableId === "opcion5" &&
         destination.droppableId === "respuestas"
       )  {
+        sound.play();
         setAlert("correcta");
-        sound2.play();
         setTimeout(function () {
           setAlert("");
         }, 800);
@@ -153,6 +157,7 @@ export default function Question4() {
         draggableId === "opcion5" &&
         destination.droppableId !== "respuestas"
       ) {
+        sound2.play();
         setError("¿Estas seguro?");
         setTimeout(function () {
           setError("");
@@ -182,14 +187,13 @@ export default function Question4() {
     val3: "sin arrastrar",
     val4: "sin arrastrar",
     val5: "sin arrastrar",
-    val6: "sin arrastrar",
   };
   const [value] = useState(valor);
   const navigate = useNavigate();
   const [error, setError] = useState();
   const [alert, setAlert] = useState();
   const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(10);
+  const [seconds, setSeconds] = useState(50);
   const [areDisabled, setAreDisabled] = useState(false);
   const [stateModal, setStateModal] = useState(false);
   const [stateModal4] = useState(false);
@@ -212,10 +216,10 @@ export default function Question4() {
         value.val4 === "sin arrastrar" &&
         value.val5 === "sin arrastrar" 
       ) {
-        sound2.play();
+        sound.play();
         setStateModal(!stateModal);
         setMinutes(0);
-        setSeconds(10);
+        setSeconds(50);
         setAreDisabled(false);
       } else if (
         value.val === "correcta" &&
@@ -226,15 +230,15 @@ export default function Question4() {
          value.val4 === "sin arrastrar") &&
         value.val5 === "correcta" 
       ) {
-        sound2.play();
+        sound.play();
         navigate("/Level3");
         setStateModal(!stateModal);
       } else {
-        sound2.play();
+        sound.play();
         setTimeout(function(){
             window.location.reload();
             setMinutes(0);
-            setSeconds(10);
+            setSeconds(50);
             setAreDisabled(!stateModal);}, 100);
         
       }
@@ -265,13 +269,6 @@ export default function Question4() {
     return () => clearInterval(timer);
   }, [minutes, seconds]);
 
-  if (minutes === 0 && seconds === 59) {
-    sound.play();
-  }
-  if (minutes === 0 && seconds === 0) {
-    sound.playing = false;
-    
-  }
   itemsFromBackend.sort(() => Math.random() - 0.5);
   return (
     <div className="body-q4">
@@ -362,30 +359,18 @@ export default function Question4() {
               })}
             </DragDropContext>
             <div>
-              {!areDisabled ? (
-                <form onSubmit={handleSubmit2}>
-                  <div class="button_next4">
-                    <input
-                      type="submit"
-                      value=" Continuar"
-                      disabled={areDisabled}
-                    />
-                  </div>
-                </form>
-              ) : (
                 <form onSubmit={handleSubmit2}>
                   <div class="button_next4">
                     <input
                       type="submit"
                       value=" Continuar"
                       onClick={() => {
-                        sound2.play();
+                        sound.play();
                         setStateModal(!stateModal);
                       }}
                     />
                   </div>
                 </form>
-              )}
             </div>
           </div>
         </>

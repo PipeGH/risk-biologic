@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import {
   getFirestore,
@@ -33,10 +34,19 @@ export default function Navbar () {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const { user, logout } = useAuth();
 
-  
+  const navigate = useNavigate();
   const handleLogout = async () => {
     await logout();
   };
+  const handleSubmit = async (e) =>{
+    try{
+      navigate("/Guia");
+          
+      } catch (error) {
+        
+        setError(error.message);
+      }
+  }
   
   useEffect(() => {
     const getDatos = async () => {
@@ -89,9 +99,9 @@ export default function Navbar () {
             </MenuItem>
             <MenuItem>
               <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
-                <div>
+                <div  onClick={handleSubmit}>
                   <MdDeveloperMode />
-                  CREDITOS
+                  INSTRUCCIONES
                 </div>
               </MenuItemLink>
             </MenuItem>
