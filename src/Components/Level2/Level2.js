@@ -12,6 +12,10 @@ export default function Level2() {
   const [stateModal3] = useState(false);
   const [stateModal4] = useState(false);
 
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
 
   return (
     <div className="body-l2">

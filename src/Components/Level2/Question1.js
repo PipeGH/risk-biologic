@@ -4,9 +4,12 @@ import Navbar from "../Navbar/Navbar";
 import residuos from "../images/residuos.png";
 import audio from "../sounds/correct.mp3";
 import audio2 from "../sounds/incorrect.mp3";
+<<<<<<< HEAD
 import audio3 from "../sounds/glosario.mp3";
 import { FaArrowCircleDown } from "react-icons/fa";
 import {Button} from './Scroll';
+=======
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
 import "./Question1.css";
 
 export default function Question1() {
@@ -59,7 +62,11 @@ export default function Question1() {
         destination.droppableId === "respuestas"
       ) {
         sound2.play();
+<<<<<<< HEAD
         setError("¿Estás  seguro?");
+=======
+        setError("¿Estas seguro?");
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -72,7 +79,11 @@ export default function Question1() {
         destination.droppableId === "respuestas"
       ) {
         sound2.play();
+<<<<<<< HEAD
         setError("¿Estás  seguro?");
+=======
+        setError("¿Estas seguro?");
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -95,7 +106,11 @@ export default function Question1() {
         destination.droppableId === "respuestas"
       ) {
         sound2.play();
+<<<<<<< HEAD
         setError("¿Estás  seguro?");
+=======
+        setError("¿Estas seguro?");
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -129,7 +144,11 @@ export default function Question1() {
   const [error, setError] = useState();
   const [alert, setAlert] = useState();
   const [minutes, setMinutes] = useState(0);
+<<<<<<< HEAD
   const [seconds, setSeconds] = useState(40);
+=======
+  const [seconds, setSeconds] = useState(20);
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
   const [areDisabled, setAreDisabled] = useState(false);
   const [stateModal, setStateModal] = useState(false);
   const [stateModal1] = useState(false);
@@ -153,7 +172,14 @@ export default function Question1() {
         value.val4 === "sin arrastrar"
       ) {
         sound.play();
+<<<<<<< HEAD
         window.location.reload();
+=======
+        setStateModal(!stateModal);
+        setMinutes(0);
+        setSeconds(20);
+        setAreDisabled(false);
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
       } else if (
         (value.val === "incorrecta" || value.val === "sin arrastrar") &&
         (value.val2 === "incorrecta" || value.val2 === "sin arrastrar") &&
@@ -161,9 +187,21 @@ export default function Question1() {
         (value.val4 === "incorrecta" || value.val4 === "sin arrastrar")
       ) {
         sound.play();
+<<<<<<< HEAD
         window.location.replace("/Question2");
       } else {
         window.location.reload();
+=======
+        navigate("/Question2");
+        setStateModal(!stateModal);
+      } else {
+        setTimeout(function () {
+          window.location.reload();
+          setMinutes(0);
+          setSeconds(20);
+          setAreDisabled(!stateModal);
+        }, 100);
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
       }
     } catch (error) {
       setError(error.message);
@@ -172,6 +210,11 @@ export default function Question1() {
   const handleSubmit2 = async (e) => {
     try {
       e.preventDefault();
+<<<<<<< HEAD
+=======
+      setError("");
+      
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
     } catch (error) {}
   };
   useEffect(() => {
@@ -185,11 +228,13 @@ export default function Question1() {
         setMinutes(0);
         setSeconds(0);
         setAreDisabled(true);
+      
       }
     }, 1000);
     return () => clearInterval(timer);
   }, [minutes, seconds]);
 
+<<<<<<< HEAD
   const [visible, setVisible] = useState(true);
   const toggleVisible = () => {
     const scrolled = document.documentElement.scrollTop;
@@ -207,6 +252,8 @@ export default function Question1() {
     });
   };
   window.addEventListener("scroll", toggleVisible);
+=======
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
   return (
     <div className="body-q1">
       <div class="Navbar-q1">
@@ -214,8 +261,8 @@ export default function Question1() {
       </div>
 
       <span>
-        {(error && <p class="error-q1">{error}</p>) ||
-          (alert && <p class="alert-q1">{alert}</p>)}
+        {(error && <p class="error-q2">{error}</p>) ||
+          (alert && <p class="alert-q2">{alert}</p>)}
       </span>
       <Button className="arrow_down">
         <FaArrowCircleDown

@@ -36,7 +36,11 @@ export default function Cards() {
 
   const [prev, setPrev] = useState(-1);
   const [minutes, setMinutes] = useState(0);
+<<<<<<< HEAD
   const [seconds, setSeconds] = useState(50);
+=======
+  const [seconds, setSeconds] = useState(30);
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
   const [areDisabled, setAreDisabled] = useState(false);
   const [stateModal, setStateModal] = useState(false);
 
@@ -158,9 +162,16 @@ export default function Cards() {
         value.val8 === "sin encontrar" 
       ) {
         e.preventDefault();
+<<<<<<< HEAD
         sound.play();
         window.location.reload();
    
+=======
+        setStateModal(false);
+        setAreDisabled(false);
+        setMinutes(0);
+        setSeconds(10);
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
       } else if (
         value.val === "pareja encontrada 1" &&
         value.val2 === "pareja encontrada 2" &&
@@ -172,9 +183,22 @@ export default function Cards() {
         value.val8 === "pareja encontrada 8" 
       ) {
         sound.play();
+<<<<<<< HEAD
         window.location.replace("/GameOver");  
       } else {
           window.location.reload();   
+=======
+       
+        navigate("/")
+          
+      } else {
+        setTimeout(function(){
+          window.location.reload();
+          setMinutes(0);
+          setSeconds(10);
+          setAreDisabled(!stateModal);}, 100);
+        
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
       }
     } catch (error) {
       error(error.message);
@@ -235,17 +259,29 @@ export default function Cards() {
               <form onSubmit={handleSubmit}>
                 <span className="span-l4">Parejas a encontrar:</span>
                 <br />
+<<<<<<< HEAD
                 <span className="span-l4">Virus:</span>
                 <p>{value.val}</p>
                 <span className="span-l4">Guardian:</span>
+=======
+                <span className="span-l4">Virus</span>
+                <p>{value.val}</p>
+                <span className="span-l4">Guardian</span>
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
                 <p>{value.val2}</p>
                 <span className="span-l4">Bacteria:</span>
                 <p>{value.val3}</p>
                 <span className="span-l4">Protozoo:</span>
                 <p>{value.val4}</p>
+<<<<<<< HEAD
                 <span className="span-l4">Jabon desinfectante:</span>
                 <p>{value.val5}</p>
                 <span className="span-l4">Elemento de bioseguridad:</span>
+=======
+                <span className="span-l4">Jabon desinfectante</span>
+                <p>{value.val5}</p>
+                <span className="span-l4">Elemento de bioseguridad</span>
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
                 <p>{value.val6}</p>
                 <span className="span-l4">Lavado de manos</span>
                 <p>{value.val7}</p>

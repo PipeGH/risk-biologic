@@ -36,6 +36,7 @@ export default function MenuP() {
           <div className="error1">
             {error && <p className="alert1">{error}</p>}
             <br />
+<<<<<<< HEAD
             <div className="container1">
               <div className="title1">¡Buena Suerte!</div>
               <div className="content1">
@@ -44,6 +45,16 @@ export default function MenuP() {
                     <input type="submit" value=" Comenzar" />
                   </div>
                   <div className="button1" onClick={handleSubmit2}>
+=======
+            <div class="container1">
+              <div class="title1">¡Buena Suerte!</div>
+              <div class="content1">
+                <form>
+                  <div class="button1" onClick={handleSubmit}>
+                    <input type="submit" value=" Comenzar" />
+                  </div>
+                  <div class="button1" onClick={handleSubmit2}>
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
                     <input type="submit" value=" Intrucciones"/>
                   </div>
                 </form>

@@ -21,7 +21,10 @@
         "antígenos",
         "Aplicar",
         "apoyo",
+<<<<<<< HEAD
         "aprendas",
+=======
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         "Aprov",
         "aprovechables",
         "Aprovechables",
@@ -30,12 +33,18 @@
         "arrastraste",
         "asegurando",
         "aséptica",
+<<<<<<< HEAD
         "Asesor",
+=======
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         "atención",
         "atenten",
         "autocuidado",
         "AUTOCUIDADO",
+<<<<<<< HEAD
         "ayuda",
+=======
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         "Bacterias",
         "bienestar",
         "Bienvenido",
@@ -50,6 +59,7 @@
         "bolsa",
         "botella",
         "boton",
+<<<<<<< HEAD
         "botón",
         "Buena",
         "cada",
@@ -59,11 +69,19 @@
         "cascará",
         "Celis",
         "clase",
+=======
+        "Buena",
+        "caja",
+        "capacidad",
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         "clasificación",
         "clic",
         "commodi",
+<<<<<<< HEAD
         "complementado",
         "completado",
+=======
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         "comunidades",
         "Confirma",
         "conjunto",
@@ -109,7 +127,10 @@
         "desinf",
         "DESINFECCIÓN",
         "desinfectante",
+<<<<<<< HEAD
         "despide",
+=======
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         "Después",
         "destinadas",
         "Diaz",
@@ -122,11 +143,15 @@
         "dinamicas",
         "directo",
         "discapacidad",
+<<<<<<< HEAD
         "Diseño",
         "Diseños",
         "dispositivo",
         "distraido",
         "Docty",
+=======
+        "dispositivo",
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         "donde",
         "dorso",
         "educativo",
@@ -170,14 +195,20 @@
         "factores",
         "fallidos",
         "familias",
+<<<<<<< HEAD
         "Felicidades",
         "Finalizar",
+=======
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         "firestore",
         "Firestore",
         "físico",
         "físicos",
         "fluidos",
+<<<<<<< HEAD
         "Formulario",
+=======
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         "frente",
         "Frotar",
         "fuga",
@@ -190,12 +221,18 @@
         "Gordillo",
         "guantes",
         "Guardar",
+<<<<<<< HEAD
         "guardián",
         "Guia",
         "hábitos",
         "hacer",
         "haya",
         "hayas",
+=======
+        "Guia",
+        "hábitos",
+        "hacer",
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         "Hemos",
         "Herlmintos",
         "hidecard",
@@ -225,7 +262,10 @@
         "intente",
         "Intentelo",
         "intentos",
+<<<<<<< HEAD
         "interno",
+=======
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         "Intrucciones",
         "invalido",
         "ipsa",
@@ -253,7 +293,10 @@
         "mantener",
         "manteniendo",
         "manzana",
+<<<<<<< HEAD
         "mediante",
+=======
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         "médica",
         "medidas",
         "medio",
@@ -321,7 +364,10 @@
         "producto",
         "promover",
         "propia",
+<<<<<<< HEAD
         "proporcionada",
+=======
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         "protección",
         "protozoo",
         "Protozoos",
@@ -343,7 +389,10 @@
         "Registro",
         "Reintentar",
         "reporte",
+<<<<<<< HEAD
         "Reservados",
+=======
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         "residuo",
         "Residuos",
         "resolución",
@@ -412,6 +461,7 @@
         "visitantes",
         "visualizar",
         "Voluptatum",
+<<<<<<< HEAD
         "vuelve",
         "Willian"
     ],
@@ -420,5 +470,12 @@
         "Comenzar",
         "Retroalimentación",
         "dinámicas"
+=======
+        "vuelve"
+    ],
+    "editor.stickyScroll.enabled": true,
+    "cSpell.ignoreWords": [
+        "Comenzar"
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
     ]
 }

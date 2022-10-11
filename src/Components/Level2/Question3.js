@@ -4,8 +4,11 @@ import Navbar from "../Navbar/Navbar";
 import preg3 from "../images/lav_manos.jpg";
 import audio from "../sounds/correct.mp3";
 import audio2 from "../sounds/incorrect.mp3";
+<<<<<<< HEAD
 import {FaArrowCircleDown} from 'react-icons/fa';
 import {Button} from './Scroll';
+=======
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
 import "./Question3.css";
 
 export default function Question3() {
@@ -74,7 +77,11 @@ export default function Question3() {
       destination.index !== 0
     ) {
       sound2.play();
+<<<<<<< HEAD
       setError("¿Estás seguro?");
+=======
+      setError("¿Estas seguro?");
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
       setTimeout(function () {
         setError("");
       }, 1000);
@@ -100,7 +107,11 @@ export default function Question3() {
     destination.index !== 1
     ) {
       sound2.play();
+<<<<<<< HEAD
       setError("¿Estás seguro?");
+=======
+      setError("¿Estas seguro?");
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
       setTimeout(function () {
         setError("");
       }, 1000);
@@ -125,7 +136,11 @@ export default function Question3() {
     destination.index !== 2
   ) {
     sound2.play();
+<<<<<<< HEAD
     setError("¿Estás seguro?");
+=======
+    setError("¿Estas seguro?");
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
     setTimeout(function () {
       setError("");
     }, 1000);
@@ -150,7 +165,11 @@ export default function Question3() {
     destination.index !== 3
   ) {
     sound2.play();
+<<<<<<< HEAD
     setError("¿Estás seguro?");
+=======
+    setError("¿Estas seguro?");
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
     setTimeout(function () {
       setError("");
     }, 1000);
@@ -175,7 +194,11 @@ export default function Question3() {
     destination.index !== 4
   ) {
     sound2.play();
+<<<<<<< HEAD
     setError("¿Estás seguro?");
+=======
+    setError("¿Estas seguro?");
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
     setTimeout(function () {
       setError("");
     }, 1000);
@@ -210,8 +233,13 @@ export default function Question3() {
   const [value] = useState(valor);
   const [error, setError] = useState();
   const [alert, setAlert] = useState();
+<<<<<<< HEAD
   const [minutes, setMinutes] = useState(1);
   const [seconds, setSeconds] = useState(10);
+=======
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(50);
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
   const [areDisabled, setAreDisabled] = useState(false);
   const [stateModal, setStateModal] = useState(false);
   const [stateModal2] = useState(false);
@@ -234,7 +262,15 @@ export default function Question3() {
         value.val4 === "sin arrastrar" &&
         value.val5 === "sin arrastrar"
       ) {
+<<<<<<< HEAD
         window.location.reload();
+=======
+        sound.play();
+        setStateModal(!stateModal);
+        setMinutes(0);
+        setSeconds(50);
+        setAreDisabled(false);
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
       } else if (
         value.val === "correcta" &&
         value.val2 === "correcta" &&
@@ -243,10 +279,22 @@ export default function Question3() {
         value.val5 === "correcta" 
       ) {
         sound.play();
+<<<<<<< HEAD
         window.location.replace('/Question4');
       } else {
         sound.play();
         window.location.reload();
+=======
+        navigate("/Question4");
+        setStateModal(!stateModal);
+      } else {
+        sound.play();
+        setTimeout(function(){
+          window.location.reload();
+          setMinutes(0);
+          setSeconds(50);
+          setAreDisabled(!stateModal);}, 100);
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
       }
     } catch (error) {
       setError(error.message);
@@ -275,6 +323,7 @@ export default function Question3() {
     return () => clearInterval(timer);
   }, [minutes, seconds]);
 
+<<<<<<< HEAD
 
   const [visible, setVisible] = useState(true);
   const toggleVisible = () => {
@@ -294,6 +343,9 @@ export default function Question3() {
   };
   window.addEventListener("scroll", toggleVisible);
   
+=======
+  itemsFromBackend.sort(() => Math.random() - 0.5);
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
   return (
     <div className="body-q3">
       <div className="Navbar-q3">

@@ -101,7 +101,11 @@ export default function Navbar () {
               <MenuItemLink onClick={() => setShowMobileMenu(!showMobileMenu)}>
                 <div  onClick={handleSubmit}>
                   <MdDeveloperMode />
+<<<<<<< HEAD
                   Intrucciones
+=======
+                  INSTRUCCIONES
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
                 </div>
               </MenuItemLink>
             </MenuItem>

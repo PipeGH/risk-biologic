@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import React, { useEffect} from "react";
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import riesgo1 from "../images/riesgo1.png";
@@ -30,7 +34,14 @@ export default function Level1() {
     sound.play();
     navigate("/Intro2");
   };
+<<<<<<< HEAD
 
+=======
+  useEffect (() =>{
+ 
+    sound.play();
+  },);
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
   return (
     <div className="body-l1">
       <div className="Navbar-l1">

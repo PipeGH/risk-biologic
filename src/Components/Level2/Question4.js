@@ -4,8 +4,11 @@ import Navbar from "../Navbar/Navbar";
 import residuos2 from "../images/residuos2.jpg";
 import audio from "../sounds/correct.mp3";
 import audio2 from "../sounds/incorrect.mp3";
+<<<<<<< HEAD
 import {FaArrowCircleDown} from 'react-icons/fa';
 import {Button} from './Scroll';
+=======
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
 import "./Question4.css";
 
 export default function Question4() {
@@ -72,7 +75,11 @@ export default function Question4() {
         destination.droppableId !== "respuestas"
       ) {
         sound2.play();
+<<<<<<< HEAD
         setError("¿Estás seguro?");
+=======
+        setError("¿Estas seguro?");
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -96,7 +103,11 @@ export default function Question4() {
         destination.droppableId !== "respuestas"
       ) {
         sound2.play();
+<<<<<<< HEAD
         setError("¿Estás seguro?");
+=======
+        setError("¿Estas seguro?");
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -120,7 +131,11 @@ export default function Question4() {
         destination.droppableId !== "respuestas"
       ) {
         sound2.play();
+<<<<<<< HEAD
         setError("¿Estás seguro?");
+=======
+        setError("¿Estas seguro?");
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -133,7 +148,11 @@ export default function Question4() {
         destination.droppableId === "respuestas"
       ) {
         sound2.play();
+<<<<<<< HEAD
         setError("¿Estás seguro?");
+=======
+        setError("¿Estas seguro?");
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -159,7 +178,11 @@ export default function Question4() {
         destination.droppableId !== "respuestas"
       ) {
         sound2.play();
+<<<<<<< HEAD
         setError("¿Estás seguro?");
+=======
+        setError("¿Estas seguro?");
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -217,7 +240,14 @@ export default function Question4() {
         value.val5 === "sin arrastrar" 
       ) {
         sound.play();
+<<<<<<< HEAD
         window.location.reload();
+=======
+        setStateModal(!stateModal);
+        setMinutes(0);
+        setSeconds(50);
+        setAreDisabled(false);
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
       } else if (
         value.val === "correcta" &&
         value.val2 === "correcta" &&
@@ -228,10 +258,23 @@ export default function Question4() {
         value.val5 === "correcta" 
       ) {
         sound.play();
+<<<<<<< HEAD
         window.location.replace('/Intro3');
       } else {
         sound.play();
         window.location.reload();
+=======
+        navigate("/Level3");
+        setStateModal(!stateModal);
+      } else {
+        sound.play();
+        setTimeout(function(){
+            window.location.reload();
+            setMinutes(0);
+            setSeconds(50);
+            setAreDisabled(!stateModal);}, 100);
+        
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
       }
     } catch (error) {
       setError(error.message);
@@ -277,6 +320,10 @@ export default function Question4() {
   };
   window.addEventListener("scroll", toggleVisible);
 
+<<<<<<< HEAD
+=======
+  itemsFromBackend.sort(() => Math.random() - 0.5);
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
   return (
     <div className="body-q4">
       <div class="Navbar-q4">

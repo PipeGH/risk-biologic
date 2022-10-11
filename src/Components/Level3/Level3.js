@@ -314,7 +314,11 @@ export default function Level3() {
         setTimeout(function () {
           setAlert("");
         }, 800);
+<<<<<<< HEAD
         value.val9 = "cascará";
+=======
+        value.val9 = "cascara";
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
    
       }
       else  if (
@@ -357,7 +361,11 @@ export default function Level3() {
   const [error, setError] = useState();
   const [alert, setAlert] = useState();
   const [minutes, setMinutes] = useState(0);
+<<<<<<< HEAD
   const [seconds, setSeconds] = useState(25);
+=======
+  const [seconds, setSeconds] = useState(15);
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
   const [areDisabled, setAreDisabled] = useState(false);
   const [stateModal, setStateModal] = useState(false);
 
@@ -385,7 +393,11 @@ export default function Level3() {
           setError("");
         },1000);
         setAreDisabled(false);
+<<<<<<< HEAD
         setMinutes(1);
+=======
+        setMinutes(10);
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         setSeconds(0);
       } else if (
         value.val === "papel" &&
@@ -396,6 +408,7 @@ export default function Level3() {
         value.val6 === "guantes" &&
         value.val7 === "gasa" &&
         value.val8 === "manzana" &&
+<<<<<<< HEAD
         value.val9 === "cascará" 
       
       ){
@@ -409,6 +422,20 @@ export default function Level3() {
           window.location.reload();
           setMinutes(1);
           setSeconds(0);
+=======
+        value.val9 === "cascara" 
+      
+      ){
+  
+        navigate("/Level4");
+        setStateModal(!stateModal);
+      
+      } else {
+        setTimeout(function(){
+          window.location.reload();
+          setMinutes(0);
+          setSeconds(10);
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
           setAreDisabled(!stateModal);}, 100);
       }
     } catch (error) {
@@ -524,6 +551,7 @@ export default function Level3() {
                 <span className="span_l3">Residuos No Aprovechables:</span>
                   <p>{value.val}</p>
                   <p>{value.val2}</p>
+<<<<<<< HEAD
                 <span className="span_l3">Residuos Aprovechables:</span>
                   <p>{value.val3}</p>
                   <p>{value.val4}</p>
@@ -532,6 +560,16 @@ export default function Level3() {
                   <p>{value.val6}</p>
                   <p>{value.val7}</p>
                   <span className="span_l3">Residuos Orgánicos:</span>
+=======
+                <span className="span_l3">Residuos Aprovechables</span>
+                  <p>{value.val3}</p>
+                  <p>{value.val4}</p>
+                <span className="span_l3">Residuos Peligrosos</span>
+                  <p>{value.val5}</p>
+                  <p>{value.val6}</p>
+                  <p>{value.val7}</p>
+                  <span className="span_l3">Residuos Organicos</span>
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
                   <p>{value.val8}</p>
                   <p>{value.val9}</p>
                 <span className="span_l3">

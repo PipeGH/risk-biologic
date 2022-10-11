@@ -4,8 +4,11 @@ import Navbar from "../Navbar/Navbar";
 import preg2 from "../images/preg2.jpg"
 import audio from "../sounds/correct.mp3";
 import audio2 from "../sounds/incorrect.mp3";
+<<<<<<< HEAD
 import {FaArrowCircleDown} from 'react-icons/fa';
 import {Button} from './Scroll';
+=======
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
 import "./Question2.css";
 
 export default function Question2() {
@@ -61,7 +64,11 @@ export default function Question2() {
         destination.droppableId === "respuestas"
       ) {
         sound2.play();
+<<<<<<< HEAD
         setError("¿Estás  seguro?");
+=======
+        setError("¿Estas seguro?");
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -74,7 +81,11 @@ export default function Question2() {
         destination.droppableId === "respuestas"
       ) {
         sound2.play();
+<<<<<<< HEAD
         setError("¿Estás seguro?");
+=======
+        setError("¿Estas seguro?");
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -87,7 +98,11 @@ export default function Question2() {
         destination.droppableId === "respuestas"
       ) {
         sound2.play();
+<<<<<<< HEAD
         setError("¿Estás seguro?");
+=======
+        setError("¿Estas seguro?");
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -101,7 +116,11 @@ export default function Question2() {
         destination.droppableId === "respuestas"
       ) {
         sound2.play();
+<<<<<<< HEAD
         setError("¿Estás seguro?");
+=======
+        setError("¿Estas seguro?");
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -125,7 +144,11 @@ export default function Question2() {
         destination.droppableId === "list"
       ) {
         sound2.play();
+<<<<<<< HEAD
         setError("¿Estás seguro?");
+=======
+        setError("¿Estas seguro?");
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -142,7 +165,11 @@ export default function Question2() {
         destination.droppableId === "respuestas"
       ) {
         sound2.play();
+<<<<<<< HEAD
         setError("¿Estás seguro?");
+=======
+        setError("¿Estas seguro?");
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -177,8 +204,13 @@ export default function Question2() {
   const [value] = useState(valor);
   const [error, setError] = useState();
   const [alert, setAlert] = useState();
+<<<<<<< HEAD
   const [minutes, setMinutes] = useState(1);
   const [seconds, setSeconds] = useState(0);
+=======
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(25);
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
   const [areDisabled, setAreDisabled] = useState(false);
   const [stateModal, setStateModal] = useState(false);
   const [stateModal2] = useState(false);
@@ -204,7 +236,14 @@ export default function Question2() {
         value.val6 === "sin arrastrar"
       ) {
         sound.play();
+<<<<<<< HEAD
         window.location.reload();
+=======
+        setStateModal(!stateModal);
+        setMinutes(0);
+        setSeconds(25);
+        setAreDisabled(false);
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
       } else if (
         (value.val === "incorrecta" ||
         value.val === "sin arrastrar") &&
@@ -219,10 +258,22 @@ export default function Question2() {
         value.val6 === "sin arrastrar")
        ){
         sound.play();
+<<<<<<< HEAD
         window.location.replace('/Question3');
       } else {
         sound.play();
         window.location.reload();
+=======
+        navigate("/Question3");
+        setStateModal(!stateModal);
+      } else {
+        sound.play();
+        setTimeout(function(){
+          window.location.reload();
+          setMinutes(0);
+          setSeconds(25);
+          setAreDisabled(!stateModal);}, 100);
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
       }
     } catch (error) {
       setError(error.message);
@@ -255,6 +306,7 @@ export default function Question2() {
     
     }, 1000);
 
+<<<<<<< HEAD
     return () => clearInterval(timer);
   }, [minutes, seconds, setAlert]);
 
@@ -276,6 +328,9 @@ export default function Question2() {
     });
   };
   window.addEventListener("scroll", toggleVisible);
+=======
+  itemsFromBackend.sort(() => Math.random() - 0.5);
+>>>>>>> 7e63c3558bda0e4289b8b0e362ea6dcf9dd21131
   return (
     <div className="body-q2">
       <div class="Navbar-q2">
