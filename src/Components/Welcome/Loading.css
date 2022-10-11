@@ -1,6 +1,6 @@
 @font-face {
     font-family: ARCO;
-    src: local('ARCO'),url('../../ARCO.ttf');
+    src: local('ARCO'),url('../fonts/ARCO.ttf');
   }            
   * {
     margin: 0;
@@ -29,6 +29,15 @@
     }
     h1{
         font-size: 3.4em;  
+        align-items: center;
+    }
+}
+@media (max-width:496px){
+    .body-p{
+        overflow: hidden;
+    }
+    h1{
+        font-size: 12px;  
         align-items: center;
     }
 }

@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
-import  residuos from "../images/residuos.png";
-import audio from "./clock.mp3";
-import audio2 from "./correct.mp3";
+import residuos from "../images/residuos.png";
+import audio from "../sounds/correct.mp3";
+import audio2 from "../sounds/incorrect.mp3";
+import audio3 from "../sounds/glosario.mp3";
+import { FaArrowCircleDown } from "react-icons/fa";
+import {Button} from './Scroll';
 import "./Question1.css";
 
 export default function Question1() {
   const itemsFromBackend = [
     { id: "opcion1", content: "En una bolsa roja" },
     { id: "opcion2", content: "No se desechan, se reutilizan" },
-    { id: "opcion3", content: "En el guardian" },
+    { id: "opcion3", content: "En el guardián" },
     { id: "opcion4", content: "Todas las anteriores" },
-  ];
+  ].sort(() => Math.random() - 0.5);
 
   const columnsFromBackend = {
     list1: {
@@ -23,7 +25,7 @@ export default function Question1() {
     },
     respuestas: {
       id: "respuestas",
-      name: "respuestas",
+      name: "Respuestas",
       items: [],
     },
   };
@@ -52,11 +54,12 @@ export default function Question1() {
         },
       });
 
-       if (
+      if (
         draggableId === "opcion1" &&
         destination.droppableId === "respuestas"
       ) {
-        setError("¿Estas seguro?");
+        sound2.play();
+        setError("¿Estás  seguro?");
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -68,7 +71,8 @@ export default function Question1() {
         draggableId === "opcion2" &&
         destination.droppableId === "respuestas"
       ) {
-        setError("¿Estas seguro?");
+        sound2.play();
+        setError("¿Estás  seguro?");
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -76,11 +80,11 @@ export default function Question1() {
           ...columns,
         });
         value.val2 = "incorrecta";
-        
       } else if (
         draggableId === "opcion3" &&
         destination.droppableId === "respuestas"
       ) {
+        sound.play();
         setAlert("Correcta");
         setTimeout(function () {
           setAlert("");
@@ -90,7 +94,8 @@ export default function Question1() {
         draggableId === "opcion4" &&
         destination.droppableId === "respuestas"
       ) {
-        setError("¿Estas seguro?");
+        sound2.play();
+        setError("¿Estás  seguro?");
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -98,8 +103,8 @@ export default function Question1() {
         setColumns({
           ...columns,
         });
-      } 
-  }else {
+      }
+    } else {
       const column = columns[source.droppableId];
       const copiedItems = [...column.items];
       const [removed] = copiedItems.splice(source.index, 1);
@@ -121,20 +126,21 @@ export default function Question1() {
     val4: "sin arrastrar",
   };
   const [value] = useState(valor);
-  const navigate = useNavigate();
   const [error, setError] = useState();
   const [alert, setAlert] = useState();
   const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(10);
+  const [seconds, setSeconds] = useState(40);
   const [areDisabled, setAreDisabled] = useState(false);
   const [stateModal, setStateModal] = useState(false);
-  const [stateModal1, setStateModal1] = useState(false);
+  const [stateModal1] = useState(false);
 
   const sound = new Audio();
   sound.src = audio;
   const sound2 = new Audio();
   sound2.src = audio2;
-
+  const sound3 = new Audio();
+  sound3.src = audio3;
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -146,25 +152,18 @@ export default function Question1() {
         value.val3 === "sin arrastrar" &&
         value.val4 === "sin arrastrar"
       ) {
-        sound2.play();
-        setStateModal(!stateModal);
-        setMinutes(0);
-        setSeconds(10);
-        setAreDisabled(false);
+        sound.play();
+        window.location.reload();
       } else if (
-        (value.val === "incorrecta" ||
-         value.val === "sin arrastrar") &&
-        (value.val2 === "incorrecta" ||
-         value.val2 === "sin arrastrar") &&
-         (value.val3 === "correcta") &&
-        (value.val4 === "incorrecta" ||
-         value.val4 === "sin arrastrar")){
-        sound2.play();
-        navigate("/Question2");
-        setStateModal(!stateModal);
+        (value.val === "incorrecta" || value.val === "sin arrastrar") &&
+        (value.val2 === "incorrecta" || value.val2 === "sin arrastrar") &&
+        value.val3 === "correcta" &&
+        (value.val4 === "incorrecta" || value.val4 === "sin arrastrar")
+      ) {
+        sound.play();
+        window.location.replace("/Question2");
       } else {
-        sound2.play();
-        navigate("/Feedback2");
+        window.location.reload();
       }
     } catch (error) {
       setError(error.message);
@@ -173,10 +172,8 @@ export default function Question1() {
   const handleSubmit2 = async (e) => {
     try {
       e.preventDefault();
-      setError("");
     } catch (error) {}
   };
-
   useEffect(() => {
     const timer = setInterval(() => {
       setSeconds(seconds - 1);
@@ -193,38 +190,58 @@ export default function Question1() {
     return () => clearInterval(timer);
   }, [minutes, seconds]);
 
-  if (minutes === 0 && seconds === 59) {
-    sound.play();
-  }
-  if (minutes === 0 && seconds === 0) {
-    sound.playing = false;
-    
-  }
-
+  const [visible, setVisible] = useState(true);
+  const toggleVisible = () => {
+    const scrolled = document.documentElement.scrollTop;
+    if (scrolled > 0){ 
+      setVisible(false) 
+    }  
+    else if (scrolled <= 0){ 
+      setVisible(true) 
+    } 
+  };
+  const scrollToTop = () => {
+    window.scrollTo({
+      top:document.documentElement.scrollHeight,
+      behavior: "smooth",
+    });
+  };
+  window.addEventListener("scroll", toggleVisible);
   return (
     <div className="body-q1">
       <div class="Navbar-q1">
         <Navbar />
       </div>
+
       <span>
         {(error && <p class="error-q1">{error}</p>) ||
           (alert && <p class="alert-q1">{alert}</p>)}
       </span>
+      <Button className="arrow_down">
+        <FaArrowCircleDown
+          onClick={scrollToTop}
+          style={{ display: visible ? "inline" : "none" }}
+        />
+      </Button>
       {!stateModal1 && (
         <>
           <div className="question1">
+       
             <p>
-            Según la nueva resolución 2184 de 2019 sobre la clasificación de residuos hospitalarios,
-            ¿donde se debe desechar las agujas previamente contaminadas?
+              Según la nueva resolución 2184 de 2019 sobre la clasificación de
+              residuos hospitalarios, ¿donde se debe desechar las agujas
+              previamente contaminadas?
             </p>
-            <div><img src={residuos} alt="" /></div>
-            <div className="time-remaining">
+            <div>
+              <img src={residuos} alt="" />
+            </div>
+            <div className="time-remaining-q1">
               {!areDisabled ? (
                 <h2>
                   Tiempo: {minutes}:{seconds}
                 </h2>
               ) : (
-                <h3>Se acabo tu tiempo para esta pregunta</h3>
+                <h3>Se acabó tu tiempo para esta pregunta</h3>
               )}
             </div>
           </div>
@@ -267,7 +284,7 @@ export default function Question1() {
                                           {...provided.dragHandleProps}
                                           className="drop-container-q1"
                                         >
-                                          <span>{item.content}</span>
+                                          <span aria-readonly="true">{item.content}</span>
                                         </div>
                                       );
                                     }}
@@ -285,30 +302,18 @@ export default function Question1() {
               })}
             </DragDropContext>
             <div>
-              {!areDisabled ? (
-                <form onSubmit={handleSubmit2}>
-                  <div class="button_next1">
-                    <input
-                      type="submit"
-                      value=" Continuar"
-                      disabled={areDisabled}
-                    />
-                  </div>
-                </form>
-              ) : (
                 <form onSubmit={handleSubmit2}>
                   <div class="button_next1">
                     <input
                       type="submit"
                       value=" Continuar"
                       onClick={() => {
-                        sound2.play();
+                        sound.play();
                         setStateModal(!stateModal);
                       }}
                     />
                   </div>
                 </form>
-              )}
             </div>
           </div>
         </>
@@ -321,7 +326,7 @@ export default function Question1() {
           changeState={setStateModal}
         >
           <div class="container-q1">
-            <div class="title1">Retroalimentacion</div>
+            <div class="title1">Retroalimentación</div>
             <div class="content-q1">
               <form onSubmit={handleSubmit}>
                 <span className="span-q1">Tu resultado es el siguiente:</span>
@@ -330,12 +335,12 @@ export default function Question1() {
                 <p>{value.val}</p>
                 <span className="span-q1">No se desechan, se reutilizan</span>
                 <p>{value.val2}</p>
-                <span className="span-q1">En el guardian</span>
+                <span className="span-q1">En el guardián</span>
                 <p>{value.val3}</p>
                 <span className="span-q1">Todas las anteriores</span>
                 <p>{value.val4}</p>
                 <span className="span-q1">
-                  Por favor, presiona el siguiente boton.
+                  Por favor, presiona el siguiente botón.
                 </span>
                 <input type="submit" value=" Continuar" className="button-q1" />
               </form>

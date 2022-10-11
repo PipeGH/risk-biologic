@@ -7,13 +7,15 @@ import { getFirestore } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCHqD1PobBRlzkpYEooNWSXgFWVOcgWNSQ",
-  authDomain: "biolog-risk-de075.firebaseapp.com",
-  projectId: "biolog-risk-de075",
-  storageBucket: "biolog-risk-de075.appspot.com",
-  messagingSenderId: "1017402896135",
-  appId: "1:1017402896135:web:81d35134fefc9b34a9dfa2"
-};
+  
+    apiKey: "AIzaSyCHqD1PobBRlzkpYEooNWSXgFWVOcgWNSQ",
+    authDomain: "biolog-risk-de075.firebaseapp.com",
+    projectId: "biolog-risk-de075",
+    storageBucket: "biolog-risk-de075.appspot.com",
+    messagingSenderId: "1017402896135",
+    appId: "1:1017402896135:web:797cc91cfb796dd0a9dfa2"
+  };
+
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);

@@ -1,6 +1,6 @@
 @font-face {
   font-family: ARCO;
-  src: local('ARCO'),url('../../ARCO.ttf');
+  src: local('ARCO'),url('../fonts/ARCO.ttf');
 }            
 * {
   margin: 0;
@@ -14,7 +14,7 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  background-color: #00482B;
 }
 .container-r{
   max-width: 700px;
@@ -37,12 +37,12 @@
 .container-r .title-r::before{
   content: "";
   position: absolute;
-  left: 30px;
+  left: 0;
   bottom: 0;
   height: 3px;
-  width: 90%;
+  width: 100%;
   border-radius: 5px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  background: linear-gradient(135deg, #007B3B, #79C000);
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -88,14 +88,22 @@ form .input-box span.details{
   font-size: 16px;
   border-radius: 5px;
   padding-left: 15px;
-  border: 1px solid #ccc;
+  border: 1px solid #CCC;
   border-bottom-width: 2px;
   transition: all 0.3s ease;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
 }
 
 .user-details .input-box input:focus,
 .user-details .input-box input:valid{
-  border-color: #9b59b6;
+  border-color: #71B7E6;
 }
  form .button{
    height: 45px;
@@ -112,12 +120,19 @@ form .input-box span.details{
    letter-spacing: 1px;
    cursor: pointer;
    transition: all 0.3s ease;
-   background: linear-gradient(135deg, #71b7e6, #9b59b6);
-   
+   background: linear-gradient(135deg, #007B3B, #79C000);
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   -ms-border-radius: 5px;
+   -o-border-radius: 5px;
+   -webkit-transition: all 0.3s ease;
+   -moz-transition: all 0.3s ease;
+   -ms-transition: all 0.3s ease;
+   -o-transition: all 0.3s ease;
 }
  form .button input:hover{
   /* transform: scale(0.99); */
-  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+  background: linear-gradient(-135deg, #007B3B, #79C000);
   }
  @media(max-width: 584px){
  .container{

@@ -28,7 +28,7 @@ import "./Register.css";
     } catch (error) {
       setError(error.message);
       if (error.code === "auth/weak-password") {
-        setError("La contraseña debe tener almenos 6 caracteres.");
+        setError("La contraseña debe tener al menos 6 caracteres.");
         setTimeout(function () { setError("") }, 800);
         setUser({...valorI});
 
@@ -48,7 +48,7 @@ import "./Register.css";
         setUser({...valorI});
       }
       if (error.code === "auth/internal-error") {
-        setError("Correo invalido.");
+        setError("Campo de contraseña vacio");
         setTimeout(function () { setError("") }, 800);
         setUser({...valorI});
       }
@@ -66,7 +66,7 @@ import "./Register.css";
             <form onSubmit={handleSubmit}>
               <div className="user-details">
                 <div className="input-box">
-                  <span className="details">Correo Electronico</span>
+                  <span className="details">Correo Electrónico</span>
                   <input
                     type="text"
                     name="email"

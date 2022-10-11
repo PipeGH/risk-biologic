@@ -1,12 +1,13 @@
 @font-face {
   font-family: ARCO;
-  src: local('ARCO'),url('../../ARCO.ttf');
+  src: local('ARCO'),url('../fonts/ARCO.ttf');
 }            
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "ARCO", sans-serif;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 .body1{
   height: 100vh;
@@ -14,7 +15,19 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  background-color:#00482B;
+  
+}
+.overlay_l{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px) saturate(150%);
 }
 .wrapper{
   max-width: 400px;
@@ -53,7 +66,7 @@
   color: #fff;
   user-select: none;
   border-radius: 15px 15px 0 0;
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  background: linear-gradient(135deg, #007B3B, #79C000);
   -webkit-border-radius: 15px 15px 0 0;
   -moz-border-radius: 15px 15px 0 0;
   -ms-border-radius: 15px 15px 0 0;
@@ -117,7 +130,7 @@ form .field-l input:focus ~ label,
 form .field-l input:valid ~ label{
   top: 0%;
   font-size: 16px;
-  color: #4158d0;
+  color: #262626;
   background: #fff;
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
@@ -150,13 +163,18 @@ form .content label{
 .wrapper form .signup-l{
   width: 100vh;
   margin-top: 10px;
-  margin-left: 70px;
+  margin-left: 90px;
   color: #262626;
   user-select: none;
+  font-size: 18px;
   justify-content:center;
  
 }
-
+.wrapper form .signup-l label{
+  text-align: center;
+  align-items: center;
+  margin: -20px;
+}
 
 form .content .signup-link{
   text-align: center;
@@ -164,8 +182,8 @@ form .content .signup-link{
 form .content .pass-link input[type="button"],
 form .content .signup-link input[type="button"]{
     height: 50px;
-    color: #4158d0;
-    font-size: 16px;
+    color: #262626;
+    font-size: 18px;
     text-align: center;
     cursor: pointer;
     border: none;
@@ -183,12 +201,12 @@ form .button-l input[type="submit"]{
   height: 50px;
   color: #fff;
   padding-left: 0;
-  font-size: 20px;
+  font-size: 22px;
   border: none;
   border-radius:25px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  background: linear-gradient(135deg, #007B3B, #79C000);
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -200,6 +218,7 @@ form .button-l input[type="submit"]{
   -o-border-radius:25px;
 }
 form .button-l input[type="submit"]:active{
+  background-color: #79C000;
   transform: scale(0.95);
   -webkit-transform: scale(0.95);
   -moz-transform: scale(0.95);

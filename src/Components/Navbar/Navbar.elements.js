@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
   height: 70px;
-  background-color: #23394d; 
+  background-color: #4E4B4B;
   
 `;
 
@@ -27,22 +27,17 @@ export const LogoContainer = styled.div`
       color: #fff;
     }
   }
-  
-
-  svg {
-    fill: #e07924;
-    margin-right: 0.5rem;
-  }
 `;
 
 export const Menu = styled.ul`
+
   height: 100%;
   display: flex;
   justify-content: space-between;
   list-style: none;
 
   @media screen and (max-width: 700px) {
-    background-color: #23394d;
+    background-color: #00482B;
     position: absolute;
     top: 70px;
     left: ${({ open }) => (open ? "0" : "-100%")}; //Import
@@ -74,16 +69,16 @@ export const MenuItemLink = styled.a`
   align-items: center;
   height: 100%;
   padding: 0.5rem 2.5rem;
-  color: #64b2ff;
+  color: #FFFFFF;
   font-family: sans-serif;
-  font-size: 1rem;
-  font-weight: 300;
+  font-size: 20px;
+  font-weight: 500;
   cursor: pointer;
   transition: 0.5s all ease;
 
 
   &:hover {
-    color: #fff;
+    color: #01A89E;
     
     transition: 0.5s all ease;
 
@@ -113,7 +108,7 @@ export const MenuItemLink = styled.a`
   
     height: 40px;
     border-radius:50%;
-    background-color:#23394d;
+    background-color:#4E4B4B;
 
   }
   span{
@@ -141,7 +136,7 @@ export const MenuItemLink = styled.a`
       margin-left:-10px;
     }
   } 
-  @media screen and (max-width: 520px) {
+  @media screen and (max-width: 596px) {
     div {
       width: 100%;
       justify-content: center;
@@ -165,7 +160,7 @@ export const MenuItemLink = styled.a`
 export const MobileIcon = styled.div`
   display: none;
 
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 596px) {
     display: flex;
     align-items: center;
     cursor: pointer;

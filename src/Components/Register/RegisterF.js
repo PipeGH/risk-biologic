@@ -11,6 +11,10 @@ import {
 } from "firebase/firestore";
 import { app } from "../../firebase";
 import "./RegisterF.css";
+import enfermera from "../images/Enfermera3.png";
+import enfermera2 from "../images/Enfermera2.png";
+import enfermero from "../images/Enfermero3.png";
+import enfermero2 from "../images/Enfermero2.png";
 
 export default function RegisterF (){
   const valorInicial = {
@@ -19,10 +23,11 @@ export default function RegisterF (){
     img_jugador: "",
   };
   let img = [
-    "https://firebasestorage.googleapis.com/v0/b/biolog-risk-de075.appspot.com/o/img%2FEnfermero3.png?alt=media&token=fada0182-0f18-439d-8f95-bb62a36619fe",
-    "https://firebasestorage.googleapis.com/v0/b/biolog-risk-de075.appspot.com/o/img%2FEnfermera3.png?alt=media&token=9448200b-c8a9-4b55-95ee-b46f956f8432",
-    "https://firebasestorage.googleapis.com/v0/b/biolog-risk-de075.appspot.com/o/img%2FEnfermero2.png?alt=media&token=853dc563-b1bd-4be2-b7cf-adfa60bb0001",
-    "https://firebasestorage.googleapis.com/v0/b/biolog-risk-de075.appspot.com/o/img%2FEnfermera2.png?alt=media&token=56fd2015-d0b6-49a2-bacd-197bd1d829ee",
+    enfermero,
+    enfermera,
+    enfermero2,
+    enfermera2,
+
   ];
   
   const [jugador, setJugador] = useState(valorInicial);
@@ -51,7 +56,7 @@ export default function RegisterF (){
           ...jugador,
           ...selectedPlayer,
         });
-        navigate("../MenuP");
+        navigate("/Intro");
       } catch (error) {
         setError(error.message);
       }
@@ -95,13 +100,13 @@ export default function RegisterF (){
           {error && <p className="alert1">{error}</p>}
           <br />
           <div className="container-rf">
-            <div className="title2">Bienvenido</div>
+            <div className="title2">Continua con tu Registro</div>
             <div className="content-rf">
               <form onSubmit={handleSubmit}>
                 <div className="user-details-rf">
                   <div className="input-box-rf">
                     <span className="details-rf">
-                      Confirma tu Correo Electronico
+                      Confirma tu Correo Electrónico
                     </span>
                     <input
                       type="text"

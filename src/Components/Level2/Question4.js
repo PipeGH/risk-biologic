@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import residuos2 from "../images/residuos2.jpg";
-import audio from "./clock.mp3";
-import audio2 from "./correct.mp3";
+import audio from "../sounds/correct.mp3";
+import audio2 from "../sounds/incorrect.mp3";
+import {FaArrowCircleDown} from 'react-icons/fa';
+import {Button} from './Scroll';
 import "./Question4.css";
 
 export default function Question4() {
@@ -15,7 +16,7 @@ export default function Question4() {
     { id: "opcion4", content: "Sarcoparasitos",},
     { id: "opcion5", content: "Protozoos y Helmintos",
     },
-  ];
+  ].sort(() => Math.random() - 0.5);
 
   const columnsFromBackend = {
     list: {
@@ -25,7 +26,7 @@ export default function Question4() {
     },
     respuestas: {
       id: "respuestas",
-      name: "respuestas",
+      name: "Respuestas",
       items: [],
     },
   };
@@ -58,8 +59,8 @@ export default function Question4() {
         draggableId === "opcion1" &&
         destination.droppableId === "respuestas"
       ) {
+        sound.play();
         setAlert("correcta");
-        sound2.play();
         setTimeout(function () {
           setAlert("");
         }, 800);
@@ -70,7 +71,8 @@ export default function Question4() {
         draggableId === "opcion1" &&
         destination.droppableId !== "respuestas"
       ) {
-        setError("¿Estas seguro?");
+        sound2.play();
+        setError("¿Estás seguro?");
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -82,8 +84,8 @@ export default function Question4() {
         draggableId === "opcion2" &&
         destination.droppableId === "respuestas"
       ) {
+        sound.play();
         setAlert("correcta");
-        sound2.play();
         setTimeout(function () {
           setAlert("");
         }, 800);
@@ -93,7 +95,8 @@ export default function Question4() {
         draggableId === "opcion2" &&
         destination.droppableId !== "respuestas"
       ) {
-        setError("¿Estas seguro?");
+        sound2.play();
+        setError("¿Estás seguro?");
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -105,8 +108,8 @@ export default function Question4() {
         draggableId === "opcion3" &&
         destination.droppableId === "respuestas"
       ) {
+        sound.play();
         setAlert("correcta");
-        sound2.play();
         setTimeout(function () {
           setAlert("");
         }, 800);
@@ -116,7 +119,8 @@ export default function Question4() {
         draggableId === "opcion3" &&
         destination.droppableId !== "respuestas"
       ) {
-        setError("¿Estas seguro?");
+        sound2.play();
+        setError("¿Estás seguro?");
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -128,7 +132,8 @@ export default function Question4() {
         draggableId === "opcion4" &&
         destination.droppableId === "respuestas"
       ) {
-        setError("¿Estas seguro?");
+        sound2.play();
+        setError("¿Estás seguro?");
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -142,8 +147,8 @@ export default function Question4() {
         draggableId === "opcion5" &&
         destination.droppableId === "respuestas"
       )  {
+        sound.play();
         setAlert("correcta");
-        sound2.play();
         setTimeout(function () {
           setAlert("");
         }, 800);
@@ -153,7 +158,8 @@ export default function Question4() {
         draggableId === "opcion5" &&
         destination.droppableId !== "respuestas"
       ) {
-        setError("¿Estas seguro?");
+        sound2.play();
+        setError("¿Estás seguro?");
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -182,14 +188,12 @@ export default function Question4() {
     val3: "sin arrastrar",
     val4: "sin arrastrar",
     val5: "sin arrastrar",
-    val6: "sin arrastrar",
   };
   const [value] = useState(valor);
-  const navigate = useNavigate();
   const [error, setError] = useState();
   const [alert, setAlert] = useState();
   const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(10);
+  const [seconds, setSeconds] = useState(50);
   const [areDisabled, setAreDisabled] = useState(false);
   const [stateModal, setStateModal] = useState(false);
   const [stateModal4] = useState(false);
@@ -212,11 +216,8 @@ export default function Question4() {
         value.val4 === "sin arrastrar" &&
         value.val5 === "sin arrastrar" 
       ) {
-        sound2.play();
-        setStateModal(!stateModal);
-        setMinutes(0);
-        setSeconds(10);
-        setAreDisabled(false);
+        sound.play();
+        window.location.reload();
       } else if (
         value.val === "correcta" &&
         value.val2 === "correcta" &&
@@ -226,17 +227,11 @@ export default function Question4() {
          value.val4 === "sin arrastrar") &&
         value.val5 === "correcta" 
       ) {
-        sound2.play();
-        navigate("/Level3");
-        setStateModal(!stateModal);
+        sound.play();
+        window.location.replace('/Intro3');
       } else {
-        sound2.play();
-        setTimeout(function(){
-            window.location.reload();
-            setMinutes(0);
-            setSeconds(10);
-            setAreDisabled(!stateModal);}, 100);
-        
+        sound.play();
+        window.location.reload();
       }
     } catch (error) {
       setError(error.message);
@@ -264,15 +259,24 @@ export default function Question4() {
     }, 1000);
     return () => clearInterval(timer);
   }, [minutes, seconds]);
+  const [visible, setVisible] = useState(true);
+  const toggleVisible = () => {
+    const scrolled = document.documentElement.scrollTop;
+    if (scrolled > 0){ 
+      setVisible(false) 
+    }  
+    else if (scrolled <= 0){ 
+      setVisible(true) 
+    } 
+  };
+  const scrollToTop = () => {
+    window.scrollTo({
+      top:document.documentElement.scrollHeight,
+      behavior: "smooth",
+    });
+  };
+  window.addEventListener("scroll", toggleVisible);
 
-  if (minutes === 0 && seconds === 59) {
-    sound.play();
-  }
-  if (minutes === 0 && seconds === 0) {
-    sound.playing = false;
-    
-  }
-  itemsFromBackend.sort(() => Math.random() - 0.5);
   return (
     <div className="body-q4">
       <div class="Navbar-q4">
@@ -282,6 +286,12 @@ export default function Question4() {
         {(error && <p class="error-q4">{error}</p>) ||
           (alert && <p class="alert-q4">{alert}</p>)}
       </span>
+      <Button>
+        <FaArrowCircleDown
+          onClick={scrollToTop}
+          style={{ display: visible ? "inline" : "none" }}
+        />
+      </Button>
       {!stateModal4 && (
         <>
           <div className="question4">
@@ -295,13 +305,13 @@ export default function Question4() {
             <div>
               <img src={residuos2} alt="" />
             </div>
-            <div className="time-remaining">
+            <div className="time-remaining-q4">
               {!areDisabled ? (
                 <h2>
                   Tiempo: {minutes}:{seconds}
                 </h2>
               ) : (
-                <h3>Se acabo tu tiempo para esta pregunta</h3>
+                <h3>Se acabó tu tiempo para esta pregunta</h3>
               )}
             </div>
           </div>
@@ -362,30 +372,18 @@ export default function Question4() {
               })}
             </DragDropContext>
             <div>
-              {!areDisabled ? (
-                <form onSubmit={handleSubmit2}>
-                  <div class="button_next4">
-                    <input
-                      type="submit"
-                      value=" Continuar"
-                      disabled={areDisabled}
-                    />
-                  </div>
-                </form>
-              ) : (
                 <form onSubmit={handleSubmit2}>
                   <div class="button_next4">
                     <input
                       type="submit"
                       value=" Continuar"
                       onClick={() => {
-                        sound2.play();
+                        sound.play();
                         setStateModal(!stateModal);
                       }}
                     />
                   </div>
                 </form>
-              )}
             </div>
           </div>
         </>
@@ -398,7 +396,7 @@ export default function Question4() {
           changeState={setStateModal}
         >
           <div class="container-q4">
-            <div class="title1">Retroalimentacion</div>
+            <div class="title1">Retroalimentación</div>
             <div class="content-q4">
               <form onSubmit={handleSubmit}>
                 <span className="span-q4">Tu resultado es el siguiente:</span>
@@ -424,7 +422,7 @@ export default function Question4() {
                 </span>
                 <p>{value.val5}</p>
                 <span className="span-q4">
-                  Por favor, presiona el siguiente boton.
+                  Por favor, presiona el siguiente botón.
                 </span>
                 <input type="submit" value=" Continuar" className="button-q4" />
               </form>

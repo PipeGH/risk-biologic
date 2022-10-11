@@ -15,12 +15,15 @@ import Question2 from "./Components/Level2/Question2";
 import Question3 from "./Components/Level2/Question3";
 import Question4 from "./Components/Level2/Question4";
 import Level3 from "./Components/Level3/Level3";
-import Feedback from "./Components/Level3/Feedback";
 import Level4 from "./Components/Level4/Cards";
-import Video1 from './Components/MenuP/Video1';
+import Intro from './Components/Welcome/Intro';
 import Intro1 from './Components/Level1/Intro1';
 import Intro2 from './Components/Level2/Intro2';
+import Intro3 from './Components/Level3/Intro3';
+import Intro4 from './Components/Level4/Intro4';
 import Guia from './Components/MenuP/Guia';
+import GameOver from './Components/Level4/GameOver';
+import Creditos from './Components/Level4/Creditos';
 
 export default function App() {
   return (
@@ -30,9 +33,13 @@ export default function App() {
           <Route path="/Register" element={<Register />} />
           <Route path="/Guia" element={<Guia />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/Video1" element={<Video1 />} />
+          <Route path="/Intro" element={<Intro />} />
           <Route path="/Intro1" element={<Intro1 />} />
           <Route path="/Intro2" element={<Intro2 />} />
+          <Route path="/Intro3" element={<Intro3 />} />
+          <Route path="/Intro4" element={<Intro4 />} />
+          <Route path="/GameOver" element={<GameOver />} />
+          <Route path="/Creditos" element={<Creditos />} />
           <Route
             path="/Navbar"
             element={
@@ -86,14 +93,6 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <Level4 />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/Feedback"
-            element={
-              <ProtectedRoute>
-                <Feedback />
               </ProtectedRoute>
             }
           />

@@ -1,5 +1,5 @@
 
-function Card({item, id, handleClick}){
+export default function Card({item, id, handleClick}){
     const itemClass = item.stat ? " active " + item.stat : ""
 
   
@@ -9,5 +9,3 @@ function Card({item, id, handleClick}){
         </div>
     )
 }
-
-export default Card

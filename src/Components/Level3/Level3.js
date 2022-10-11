@@ -11,6 +11,9 @@ import jeringa from "../images/jeringa.png";
 import guantes from "../images/guantes.png";
 import gasa from "../images/gasa.png";
 import Navbar from "../Navbar/Navbar";
+import audio from "../sounds/correct.mp3";
+import audio2 from "../sounds/incorrect.mp3";
+import audio3 from "../sounds/glosario.mp3";
 import "./Level3.css";
 
 export default function Level3() {
@@ -49,7 +52,7 @@ export default function Level3() {
     },
     organicos: {
       id: "organicos",
-      name: "Organicos",
+      name: "Orgánicos",
       items: [],
     },
   };
@@ -92,16 +95,18 @@ export default function Level3() {
       });
       
     }
+    
     if (
       destination.droppableId === "NoAprovOrd" &&
       draggableId === "residuo1" 
       
       ) {
+      sound.play();
       setAlert("correcta");
       setTimeout(function () {
         setAlert("");
       }, 800);
-      value.val = "papel higienico";
+      value.val = "papel";
  
     } 
     else if (
@@ -109,7 +114,8 @@ export default function Level3() {
       draggableId === "residuo1" 
     
       ) {
-      setError("¿Estas seguro?");
+      sound2.play();  
+      setError("¿Estás seguro?");
       setTimeout(function () {
         setError("");
       }, 800);
@@ -122,18 +128,20 @@ export default function Level3() {
       destination.droppableId === "NoAprovOrd" &&
       draggableId === "residuo2"
       ) {
+      sound.play();  
       setAlert("correcta");
       setTimeout(function () {
         setAlert("");
       }, 800);
-      value.val2 = "vaso carton";
+      value.val2 = "vaso";
  
     }
     else if (
       destination.droppableId !== "NoAprovOrd" &&
       draggableId === "residuo2"
       ){
-      setError("¿Estas seguro?");
+      sound2.play();  
+      setError("¿Estás seguro?");
       setTimeout(function () {
         setError("");
       }, 800);
@@ -146,18 +154,20 @@ export default function Level3() {
       destination.droppableId === "aprovechables" &&
       draggableId === "residuo3"
       ) {
+      sound.play();
       setAlert("correcta");
       setTimeout(function () {
         setAlert("");
       }, 800);
-      value.val3 = "caja carton";
+      value.val3 = "caja";
  
     }
     else if (
       destination.droppableId !== "aprovechables" &&
       draggableId === "residuo3"
       ){
-      setError("¿Estas seguro?");
+      sound2.play();  
+      setError("¿Estás seguro?");
       setTimeout(function () {
         setError("");
       }, 800);
@@ -170,6 +180,7 @@ export default function Level3() {
       destination.droppableId === "aprovechables" &&
       draggableId === "residuo4"
       ) {
+      sound.play();
       setAlert("correcta");
       setTimeout(function () {
         setAlert("");
@@ -181,7 +192,8 @@ export default function Level3() {
       destination.droppableId !== "aprovechables" &&
       draggableId === "residuo4"
       ) {
-      setError("¿Estas seguro?");
+      sound2.play();  
+      setError("¿Estás seguro?");
       setTimeout(function () {
         setError("");
       }, 800);
@@ -194,6 +206,7 @@ export default function Level3() {
       destination.droppableId === "peligrosos" &&
       draggableId === "residuo5"
       ) {
+      sound.play();
       setAlert("correcta");
       setTimeout(function () {
         setAlert("");
@@ -204,7 +217,8 @@ export default function Level3() {
       destination.droppableId !== "peligrosos" &&
       draggableId === "residuo5"
       ) {
-      setError("¿Estas seguro?");
+      sound2.play();  
+      setError("¿Estás seguro?");
       setTimeout(function () {
         setError("");
       }, 800);
@@ -217,6 +231,7 @@ export default function Level3() {
       destination.droppableId === "peligrosos" &&
       draggableId === "residuo6"
       ) {
+      sound.play();
       setAlert("correcta");
       setTimeout(function () {
         setAlert("");
@@ -228,7 +243,8 @@ export default function Level3() {
       destination.droppableId !== "peligrosos" &&
       draggableId === "residuo6"
       ) {
-      setError("¿Estas seguro?");
+      sound2.play();  
+      setError("¿Estás seguro?");
       setTimeout(function () {
         setError("");
       }, 800);
@@ -241,6 +257,7 @@ export default function Level3() {
         destination.droppableId === "peligrosos" &&
         draggableId === "residuo7"
         ) {
+        sound.play();
         setAlert("correcta");
         setTimeout(function () {
           setAlert("");
@@ -252,7 +269,8 @@ export default function Level3() {
         destination.droppableId !== "peligrosos" &&
         draggableId === "residuo7"
         ) {
-        setError("¿Estas seguro?");
+        sound2.play();  
+        setError("¿Estás seguro?");
         setTimeout(function () {
           setError("");
         }, 800);
@@ -265,18 +283,20 @@ export default function Level3() {
         destination.droppableId === "organicos" &&
         draggableId === "residuo8"
         ) {
-        setAlert("correcta");
+        sound.play();  
+          setAlert("correcta");
         setTimeout(function () {
           setAlert("");
         }, 800);
-        value.val8 = "cascara";
+        value.val8 = "manzana";
    
       }
       else if (
         destination.droppableId !== "organicos" &&
         draggableId === "residuo8"
         ) {
-        setError("¿Estas seguro?");
+        sound2.play();  
+        setError("¿Estás seguro?");
         setTimeout(function () {
           setError("");
         }, 800);
@@ -289,18 +309,20 @@ export default function Level3() {
         destination.droppableId === "organicos" &&
         draggableId === "residuo9"
         ) {
+        sound.play();
         setAlert("correcta");
         setTimeout(function () {
           setAlert("");
         }, 800);
-        value.val9 = "manzana";
+        value.val9 = "cascará";
    
       }
       else  if (
         destination.droppableId !== "organicos" &&
         draggableId === "residuo9"
         ){
-        setError("¿Estas seguro?");
+        sound2.play();  
+        setError("¿Estás seguro?");
         setTimeout(function () {
           setError("");
         }, 800);
@@ -323,18 +345,26 @@ export default function Level3() {
     val8: "sin arrastrar",
     val9: "sin arrastrar",
   };
+  const sound = new Audio();
+  sound.src = audio;
+  const sound2 = new Audio();
+  sound2.src = audio2;
+  const sound3 = new Audio();
+  sound3.src = audio3;
+
   const [value] = useState(valor);
   const navigate = useNavigate();
   const [error, setError] = useState();
   const [alert, setAlert] = useState();
   const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(19);
+  const [seconds, setSeconds] = useState(25);
   const [areDisabled, setAreDisabled] = useState(false);
   const [stateModal, setStateModal] = useState(false);
 
 
   const handleSubmit2 = async (e) => {
     e.preventDefault();
+    sound.play();
     setError("");
     try {
       if (
@@ -350,21 +380,36 @@ export default function Level3() {
       ) {
         e.preventDefault();
         setStateModal(false);
+        setError("No arrastraste nada, vuelve a intentarlo");
+        setTimeout(function () {
+          setError("");
+        },1000);
         setAreDisabled(false);
-        setMinutes(0);
-        setSeconds(10);
+        setMinutes(1);
+        setSeconds(0);
       } else if (
-        value.val === "papel higienico" &&
-        value.val === "caja jugo" &&
-        value.val === "vaso carton " &&
-        value.val4 === "empaque carton" &&
-        value.val5 === "botella plastico" &&
-        value.val6 === "periodico" &&
-        value.val7 === "gasa"
-      ) {
-        navigate("/Feedback");
+        value.val === "papel" &&
+        value.val2 === "vaso" &&
+        value.val3 === "caja" &&
+        value.val4 === "botella" &&
+        value.val5 === "jeringa" &&
+        value.val6 === "guantes" &&
+        value.val7 === "gasa" &&
+        value.val8 === "manzana" &&
+        value.val9 === "cascará" 
+      
+      ){
+        sound3.play();
+        navigate("/Intro4");
+        setStateModal(!stateModal);
+      
       } else {
-        navigate("/Feedback2");
+        sound.play();
+        setTimeout(function(){
+          window.location.reload();
+          setMinutes(1);
+          setSeconds(0);
+          setAreDisabled(!stateModal);}, 100);
       }
     } catch (error) {
       setError(error.message);
@@ -372,7 +417,7 @@ export default function Level3() {
   };
  
   useEffect(() => {
-  
+    
     const timer = setInterval(() => {
       setSeconds(seconds - 1);
       if (minutes !== 0 && seconds === 0) {
@@ -385,7 +430,9 @@ export default function Level3() {
         setAreDisabled(true);
         setStateModal(true);
       }
+      
     }, 1000);
+    
     return () => clearInterval(timer);
   }, [minutes, seconds]);
  
@@ -396,13 +443,13 @@ export default function Level3() {
       </div>
       {(error && <p className="error2">{error}</p>) ||
         (alert && <p className="alert2">{alert}</p>)}
-      <div className="app_container">
+      <div className="app_container_l3">
         <DragDropContext
           onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
         >
           {Object.entries(columns).map(([columnId, column], index) => {
             return (
-              <div key={columnId} className="dd_container">
+              <div key={columnId} className="dd_container_l3">
                 <h2>{column.name}</h2>
                 <div className="time_remaining">
                   {!areDisabled ? (
@@ -423,7 +470,7 @@ export default function Level3() {
                     {(provided) => {
                       return (
                         <div
-                          className="drag_container"
+                          className="drag_container_l3"
                           {...provided.droppableProps}
                           ref={provided.innerRef}
                         >
@@ -442,7 +489,7 @@ export default function Level3() {
                                       ref={provided.innerRef}
                                       {...provided.draggableProps}
                                       {...provided.dragHandleProps}
-                                      className="drop_container"
+                                      className="drop_container_l3"
                                     >
                                       <img src={item.content} alt="" />
                                     </div>
@@ -469,26 +516,26 @@ export default function Level3() {
           changeState={setStateModal}
         >
           <div className="container_l3">
-            <div className="title1">Retroalimentacion</div>
+            <div className="title1">Retroalimentación</div>
             <div className="content_l3">
               <form onSubmit={handleSubmit2}>
-                <span className="span_l3">Tu resultado es el siguiente</span>
+                <span className="span_l3">Tu resultado es el siguiente:</span>
                 <br />
-                <span className="span_l3">Residuos No Aprovechables</span>
+                <span className="span_l3">Residuos No Aprovechables:</span>
                   <p>{value.val}</p>
                   <p>{value.val2}</p>
-                <span className="span_l3">Residuos Aprovechables</span>
-                <p>{value.val3}</p>
-                <p>{value.val4}</p>
-                <span className="span_l3">Residuos Peligrosos</span>
-                <p>{value.val7}</p>
-                  <p>{value.val8}</p>
-                  <p>{value.val9}</p>
-                  <span className="span_l3">Residuos Organicos</span>
+                <span className="span_l3">Residuos Aprovechables:</span>
+                  <p>{value.val3}</p>
+                  <p>{value.val4}</p>
+                <span className="span_l3">Residuos Peligrosos:</span>
                   <p>{value.val5}</p>
                   <p>{value.val6}</p>
+                  <p>{value.val7}</p>
+                  <span className="span_l3">Residuos Orgánicos:</span>
+                  <p>{value.val8}</p>
+                  <p>{value.val9}</p>
                 <span className="span_l3">
-                  Por favor, presiona el siguiente boton.
+                  Por favor, presiona el siguiente botón.
                 </span>
                 <input type="submit" value=" Continuar" className="button_l3" />
               </form>

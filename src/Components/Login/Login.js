@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { useAuth } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
@@ -22,20 +22,16 @@ export default function Login() {
     
     try {
       await login(user.email, user.password);
-      navigate("/MenuP");
+      navigate("/Intro1");
     } catch (error) {
       setError(error.message);
       if (error.code === "auth/user-not-found") {
         setError("Correo incorrecto, intente nuevamente.");
-        setTimeout(function () { setError("") }, 800);
-        setTimeout(function(){window.location.reload()}, 100);
-        setUser({...valorInputs});
+       
       }
       if (error.code === "auth/wrong-password") {
         setError("Contraseña incorrecta, intente nuevamente.");
-        setTimeout(function () { setError("") }, 800);
-        setTimeout(function(){window.location.reload()}, 100);
-        setUser({...valorInputs});
+       
       }
       if (error.code === "auth/invalid-email") {
         setError("Proveedor de correo inexistente.");
@@ -66,7 +62,7 @@ export default function Login() {
     
   };
   const handleResetPassword = async () => {
-    if (!user.email) return setError("Por favor escriba su correo");
+    if (!user.email) return setError("Por favor, escriba su correo");
 
     console.log("reset");
     try {
@@ -74,7 +70,7 @@ export default function Login() {
       setError(
         <p>
           Hemos enviado un link a tu correo <br />
-          para restablecer tu contraseña. <br />
+          para restablecer la contraseña. <br />
           Recuerda revisar tu correo de spam
         </p>
       );
@@ -85,9 +81,10 @@ export default function Login() {
   const handleRegister = () => {
     navigate("/Register");
   };
-
+  
   return (
     <div className="body1">
+      <div className="overlay_l">
       <div className="error">
         {error && <p className="alert">{error}</p>}
         <br />
@@ -101,7 +98,7 @@ export default function Login() {
                 required
                 onChange={handleChange}
               />
-              <label>Correo Electronico</label>
+              <label>Correo Electrónico</label>
             </div>
             <div className="field-l">
               <input
@@ -111,7 +108,7 @@ export default function Login() {
                 onChange={handleChange}
                 maxLength="15"
               />
-              <label>Contraeña</label>
+              <label>Contraseña</label>
             </div>
             <div className="content">
               <div className="pass-link">
@@ -126,19 +123,20 @@ export default function Login() {
               <input type="submit" className="login" value="Iniciar Sesión" />
             </div>
             <div className="signup-l">
-            <label >¿Aun no se ha registrado?</label>
+            <label >¿Aún no se ha registrado?</label>
             </div>
             <div className="content">
               <div className="signup-link">
                 <input
                 type="button"
                 onClick={handleRegister}
-                  value="Registrese ahora"
+                  value="Regístrese ahora"
                 />
               </div>
             </div>
           </form>
         </div>
+      </div>
       </div>
     </div>
   );

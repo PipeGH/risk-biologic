@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import preg2 from "../images/preg2.jpg"
-import audio  from "./clock.mp3";
-import audio2  from "./correct.mp3";
+import audio from "../sounds/correct.mp3";
+import audio2 from "../sounds/incorrect.mp3";
+import {FaArrowCircleDown} from 'react-icons/fa';
+import {Button} from './Scroll';
 import "./Question2.css";
 
 export default function Question2() {
@@ -16,7 +17,7 @@ export default function Question2() {
     { id: "opcion4", content: "Después de estar en contacto con el entorno del paciente"},
     { id: "opcion5", content: "Después de realizar una tarea limpia o aséptica"},
     { id: "opcion6", content: "Después de contacto con el paciente"}
-  ];
+  ].sort(() => Math.random() - 0.5);
 
   const columnsFromBackend = {
     list1: {
@@ -26,7 +27,7 @@ export default function Question2() {
     },
     respuestas: {
       id: "respuestas",
-      name: "respuestas",
+      name: "Respuestas",
       items: [],
     },
   };
@@ -59,7 +60,8 @@ export default function Question2() {
         draggableId === "opcion1" &&
         destination.droppableId === "respuestas"
       ) {
-        setError("¿Estas seguro?");
+        sound2.play();
+        setError("¿Estás  seguro?");
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -71,8 +73,8 @@ export default function Question2() {
         draggableId === "opcion2" &&
         destination.droppableId === "respuestas"
       ) {
-        
-        setError("¿Estas seguro?");
+        sound2.play();
+        setError("¿Estás seguro?");
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -84,7 +86,8 @@ export default function Question2() {
         draggableId === "opcion3" &&
         destination.droppableId === "respuestas"
       ) {
-        setError("¿Estas seguro?");
+        sound2.play();
+        setError("¿Estás seguro?");
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -97,7 +100,8 @@ export default function Question2() {
         draggableId === "opcion4" &&
         destination.droppableId === "respuestas"
       ) {
-        setError("¿Estas seguro?");
+        sound2.play();
+        setError("¿Estás seguro?");
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -110,8 +114,8 @@ export default function Question2() {
         draggableId === "opcion5" &&
         destination.droppableId === "respuestas"
       ) {
+        sound.play();
         setAlert("correcta");
-        sound2.play();
         setTimeout(function () {
           setAlert("");
         }, 800);
@@ -120,14 +124,15 @@ export default function Question2() {
         draggableId === "opcion5" &&
         destination.droppableId === "list"
       ) {
-        setError("¿Estas seguro?");
+        sound2.play();
+        setError("¿Estás seguro?");
         setTimeout(function () {
           setError("");
         }, 1000);
         setColumns({
           ...columns,
         });
-        setError("¿Estas seguro?");
+        setError("¿Estás seguro?");
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -136,7 +141,8 @@ export default function Question2() {
         draggableId === "opcion6" &&
         destination.droppableId === "respuestas"
       ) {
-        setError("¿Estas seguro?");
+        sound2.play();
+        setError("¿Estás seguro?");
         setTimeout(function () {
           setError("");
         }, 1000);
@@ -169,17 +175,17 @@ export default function Question2() {
     val6: "sin arrastrar"
   };
   const [value] = useState(valor);
-  const navigate = useNavigate();
   const [error, setError] = useState();
   const [alert, setAlert] = useState();
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(10);
+  const [minutes, setMinutes] = useState(1);
+  const [seconds, setSeconds] = useState(0);
   const [areDisabled, setAreDisabled] = useState(false);
   const [stateModal, setStateModal] = useState(false);
   const [stateModal2] = useState(false);
 
   const sound = new Audio();
   sound.src = audio;
+
   const sound2 = new Audio();
   sound2.src = audio2;
 
@@ -197,11 +203,8 @@ export default function Question2() {
         value.val5 === "sin arrastrar" &&
         value.val6 === "sin arrastrar"
       ) {
-        sound2.play();
-        setStateModal(!stateModal);
-        setMinutes(0);
-        setSeconds(10);
-        setAreDisabled(false);
+        sound.play();
+        window.location.reload();
       } else if (
         (value.val === "incorrecta" ||
         value.val === "sin arrastrar") &&
@@ -215,12 +218,11 @@ export default function Question2() {
         (value.val6 === "incorrecta" ||
         value.val6 === "sin arrastrar")
        ){
-        sound2.play();
-        navigate("/Question3");
-        setStateModal(!stateModal);
+        sound.play();
+        window.location.replace('/Question3');
       } else {
-        sound2.play();
-        navigate("/Feedback2");
+        sound.play();
+        window.location.reload();
       }
     } catch (error) {
       setError(error.message);
@@ -234,29 +236,46 @@ export default function Question2() {
   };
 
   useEffect(() => {
+
     const timer = setInterval(() => {
       setSeconds(seconds - 1);
       if (minutes !== 0 && seconds === 0) {
         setMinutes(minutes - 1);
         setSeconds(59);
+        
+    
       }
       if (minutes === 0 && seconds === 0) {
         
         setMinutes(0);
         setSeconds(0);
         setAreDisabled(true);
+        
       }
+    
     }, 1000);
-    return () => clearInterval(timer);
-  }, [minutes, seconds]);
 
-  if (minutes === 0 && seconds === 59) {
-    sound.play();
-  }
-  if (minutes === 0 && seconds === 0) {
-    sound.playing = false;
-  }
-  itemsFromBackend.sort(() => Math.random() - 0.5);
+    return () => clearInterval(timer);
+  }, [minutes, seconds, setAlert]);
+
+  
+  const [visible, setVisible] = useState(true);
+  const toggleVisible = () => {
+    const scrolled = document.documentElement.scrollTop;
+    if (scrolled > 0){ 
+      setVisible(false) 
+    }  
+    else if (scrolled <= 0){ 
+      setVisible(true) 
+    } 
+  };
+  const scrollToTop = () => {
+    window.scrollTo({
+      top:document.documentElement.scrollHeight,
+      behavior: "smooth",
+    });
+  };
+  window.addEventListener("scroll", toggleVisible);
   return (
     <div className="body-q2">
       <div class="Navbar-q2">
@@ -266,6 +285,12 @@ export default function Question2() {
         {(error && <p class="error-q2">{error}</p>) ||
           (alert && <p class="alert-q2">{alert}</p>)}
       </span>
+      <Button>
+        <FaArrowCircleDown
+          onClick={scrollToTop}
+          style={{ display: visible ? "inline" : "none" }}
+        />
+      </Button>
       {!stateModal2 && (
         <>
           <div className="question2">
@@ -274,14 +299,14 @@ export default function Question2() {
             pertenece a estos.
             </p>
             <div><img src={preg2} alt="" /></div>
-            <div className="time-remaining">
+            <div className="time-remaining-q2">
               {!areDisabled ? (
                 <h2>
                   Tiempo: {minutes}:{seconds}
                 </h2>
               ) : (
                 <h3>
-                  Se acabo tu tiempo para esta pregunta
+                  Se acabó tu tiempo para esta pregunta
                 </h3>
               )}
             </div>
@@ -344,30 +369,18 @@ export default function Question2() {
               })}
             </DragDropContext>
             <div>
-              {!areDisabled ? (
-                <form onSubmit={handleSubmit2}>
-                  <div class="button_next2">
-                    <input
-                      type="submit"
-                      value=" Continuar"
-                      disabled={areDisabled}
-                    />
-                  </div>
-                </form>
-              ) : (
                 <form onSubmit={handleSubmit2}>
                   <div class="button_next2">
                     <input
                       type="submit"
                       value=" Continuar"
                       onClick={() => {
-                        sound2.play();
+                        sound.play();
                         setStateModal(!stateModal);
                       }}
                     />
                   </div>
                 </form>
-              )}
             </div>
           </div>
         </>
@@ -380,7 +393,7 @@ export default function Question2() {
           changeState={setStateModal}
         >
           <div class="container-q2">
-            <div class="title1">Retroalimentacion</div>
+            <div class="title1">Retroalimentación</div>
             <div class="content-q2">
               <form onSubmit={handleSubmit}>
                 <span className="span-q2">Tu resultado es el siguiente:</span>
@@ -394,11 +407,11 @@ export default function Question2() {
                 <span className="span-q2">Después de estar en contacto con el entorno del paciente:</span>
                 <p >{value.val4}</p>
                 <span className="span-q2">Después de realizar una tarea limpia o aséptica:</span>
-                <p className="correct">{value.val5}</p>
-                <span className="span-q2">Después de contacto con el paciente:</span>
-                <p className ="valor">{value.val6}</p>
+                <p>{value.val5}</p>
+                <span className="span-q2">Después de contacto con paciente:</span>
+                <p>{value.val6}</p>
                 <span className="span-q2">
-                  Por favor, presiona el siguiente boton.
+                  Por favor, presiona el siguiente botón.
                 </span>
                 <input type="submit" value=" Continuar" className="button-q2" />
               </form>

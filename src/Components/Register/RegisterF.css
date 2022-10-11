@@ -1,9 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-*{
+
+@font-face {
+  font-family: ARCO;
+  src: local('ARCO'),url('../fonts/ARCO.ttf');
+}            
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "ARCO", sans-serif;
 }
 .body-rf{
   height: 100vh;
@@ -11,7 +15,7 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  background-color: #00462B;
 }
 .container-rf{
   max-width: 700px;
@@ -37,9 +41,9 @@
   left: 0;
   bottom: 0;
   height: 3px;
-  width: 90%;
+  width: 100%;
   border-radius: 5px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  background: linear-gradient(135deg, #007B3B, #79C000);
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -90,13 +94,17 @@ form .radio-details-rf span.radio-title-rf{
   font-size: 20px;
   border-radius: 5px;
   padding-left: 15px;
-  border: 1px solid #ccc;
+  border: 1px solid #CCC;
   border-bottom-width: 2px;
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
 }
 .radio-details-rf .radio1 input{
   height: 18px;
@@ -112,7 +120,7 @@ form .radio-details-rf span.radio-title-rf{
 }
 .user-details-rf .input-box-rf input:focus,
 .user-details-rf .input-box-rf input:valid{
-  border-color: #9b59b6;
+  border-color: #71B7E6;
 }
  form .radio-details-rf .radio-title-rf{
   font-size: 17px;
@@ -143,7 +151,7 @@ form .radio-details-rf span.radio-title-rf{
  .radio-details-rf .category input{
   height: 18px;
   width: 18px;
-  background-color: #71b7e6;
+  background-color: #71B7E6;
   border-radius: 50%;
   margin-right: 5px;
   border: 5px solid transparent;
@@ -159,7 +167,7 @@ form .radio-details-rf span.radio-title-rf{
 }
 #dot-1:checked 	∼ .category label .one,
 #dot-2:checked ∼ .category label .two{
-  border-color: #d9d9d9;
+  border-color: #D9D9D9;
 
 }
 
@@ -183,7 +191,7 @@ form .radio-details-rf span.radio-title-rf{
    letter-spacing: 1px;
    cursor: pointer;
    transition: all 0.3s ease;
-   background: linear-gradient(135deg, #71b7e6, #9b59b6);
+   background: linear-gradient(135deg, #007B3B, #79C000);
    -webkit-transition: all 0.3s ease;
    -moz-transition: all 0.3s ease;
    -ms-transition: all 0.3s ease;
@@ -195,7 +203,7 @@ form .radio-details-rf span.radio-title-rf{
 }
 .container-rf form .button1:hover{
   /* transform: scale(0.99); */
-  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+  background: linear-gradient(135deg, #007B3B, #79C000);
   }
  @media(max-width: 584px){
  .container-rf{
